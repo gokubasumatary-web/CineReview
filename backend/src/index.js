@@ -20,7 +20,11 @@ app.use(express.json());
 
 // Basic Route
 app.get('/', (req, res) => {
-  res.json({ message: 'CineReview API is running...' });
+  res.json({ 
+    message: 'CineVerse API is running...',
+    status: 'Operational',
+    timestamp: new Date().toISOString()
+  });
 });
 
 // Import Routes
