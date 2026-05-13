@@ -1,3 +1,9 @@
+/**
+ * Root Layout
+ * The top-level layout component that wraps all pages.
+ * Configures global fonts (Inter, Spline Sans, Space Grotesk) and sets up the base HTML structure.
+ * Includes Google Material Symbols for iconography.
+ */
 import { Inter, Spline_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -21,6 +27,11 @@ export const metadata = {
   description: "A modern, cinematic movie review experience powered by AI.",
 };
 
+/**
+ * Root Layout Component
+ * @param {Object} props - Component props.
+ * @param {React.ReactNode} props.children - The child pages to render within the layout.
+ */
 export default function RootLayout({
   children,
 }) {
