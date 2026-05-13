@@ -32,6 +32,10 @@ const addToWatchlist = async (req, res) => {
   try {
     const { userId, movieId } = req.body;
     
+    if (!userId || !movieId) {
+      return res.status(400).json({ message: 'User ID and Movie ID are required' });
+    }
+    
     const existing = await prisma.watchlist.findUnique({
       where: { userId_movieId: { userId, movieId } }
     });
