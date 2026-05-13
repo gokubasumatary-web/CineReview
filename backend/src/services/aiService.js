@@ -46,13 +46,6 @@ const synthesizeMovieInsight = async (movieData) => {
       visualStyle = "Polished";
     }
 
-    return {
-      score: Math.round(rating * 10),
-      analysis,
-      pacing,
-      theme,
-      visualStyle,
-      emotionalDepth,
     const pros = ["Exceptional Cast Chemistry", "High Production Value"];
     const cons = ["Occasional Narrative Sag"];
 
