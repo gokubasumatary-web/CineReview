@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import MovieCard from '@/components/MovieCard';
+import SectionHeader from '@/components/SectionHeader';
 
 const BACKEND_URL = 'http://localhost:5000/api';
 
@@ -65,11 +66,6 @@ export default function WatchlistPage() {
       <Navbar />
       
       <main className="flex-grow pt-32 px-margin-mobile md:px-margin-desktop pb-20">
-import SectionHeader from '@/components/SectionHeader';
-
-// ... (skipping constants)
-
-// Inside WatchlistPage:
         <SectionHeader 
           title="My Watchlist" 
           subtitle="Vault" 
