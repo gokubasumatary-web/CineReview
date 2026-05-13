@@ -1,3 +1,11 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+/**
+ * CineVerse Data Model
+ * Defines the relationships between Users, Reviews, and Watchlists.
+ */
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,6 +15,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+/**
+ * User Model
+ * Stores core identity and authentication state.
+ */
 model User {
   id        String      @id @default(uuid())
   email     String      @unique
