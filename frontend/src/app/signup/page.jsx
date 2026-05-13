@@ -51,7 +51,8 @@ export default function SignupPage() {
       localStorage.setItem('user', JSON.stringify(data.user));
       router.push('/browse');
     } catch (err) {
-      setError(err.message);
+      console.error('Signup Error:', err);
+      setError(err.message || 'Registration failed. Please ensure your details are correct and try again.');
     } finally {
       setIsLoading(false);
     }
