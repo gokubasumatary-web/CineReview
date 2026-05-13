@@ -1,6 +1,15 @@
+/**
+ * Watchlist Controller
+ * Manages personalized user watchlists.
+ */
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+/**
+ * Retrieves the watchlist for a specific user.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const getWatchlist = async (req, res) => {
   try {
     const { userId } = req.query; // For simplicity using query param, ideally from JWT
@@ -14,6 +23,11 @@ const getWatchlist = async (req, res) => {
   }
 };
 
+/**
+ * Adds a movie to a user's watchlist.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const addToWatchlist = async (req, res) => {
   try {
     const { userId, movieId } = req.body;
@@ -35,6 +49,11 @@ const addToWatchlist = async (req, res) => {
   }
 };
 
+/**
+ * Removes a movie from a user's watchlist.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const removeFromWatchlist = async (req, res) => {
   try {
     const { userId, movieId } = req.body;
