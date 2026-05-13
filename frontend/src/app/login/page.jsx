@@ -49,7 +49,8 @@ export default function LoginPage() {
       localStorage.setItem('user', JSON.stringify(data.user));
       router.push('/browse');
     } catch (err) {
-      setError(err.message);
+      console.error('Login Error:', err);
+      setError(err.message || 'Authentication failed. Please check your credentials and try again.');
     } finally {
       setIsLoading(false);
     }
