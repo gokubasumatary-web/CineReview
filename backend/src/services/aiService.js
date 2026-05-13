@@ -53,8 +53,28 @@ const synthesizeMovieInsight = async (movieData) => {
       theme,
       visualStyle,
       emotionalDepth,
-      pros: ["Exceptional Cast Chemistry", "High Production Value"],
-      cons: ["Occasional Narrative Sag"]
+    const pros = ["Exceptional Cast Chemistry", "High Production Value"];
+    const cons = ["Occasional Narrative Sag"];
+
+    if (genres.includes('Horror')) {
+      pros[0] = "Masterful Jump Scares";
+      pros[1] = "Ominous Sound Design";
+      cons[0] = "Relies on Tropes";
+    } else if (genres.includes('Comedy')) {
+      pros[0] = "Sharp Witty Dialogue";
+      pros[1] = "Impeccable Timing";
+      cons[0] = "Predictable Plot Beats";
+    }
+
+    return {
+      score: Math.round(rating * 10),
+      analysis,
+      pacing,
+      theme,
+      visualStyle,
+      emotionalDepth,
+      pros,
+      cons
     };
   }
 
