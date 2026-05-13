@@ -1,3 +1,8 @@
+/**
+ * AI Service
+ * Leverages Anthropic's Claude API to generate sophisticated cinematic insights.
+ * Includes a robust fallback/simulation mode for development without an API key.
+ */
 const Anthropic = require('@anthropic-ai/sdk');
 
 const anthropic = new Anthropic({
@@ -5,8 +10,9 @@ const anthropic = new Anthropic({
 });
 
 /**
- * Synthesizes movie reviews and data into a cinematic insight.
- * @param {Object} movieData - The full movie object from TMDB.
+ * Synthesizes movie reviews and metadata into a high-end cinematic analysis.
+ * @param {Object} movieData - The full movie object from TMDB, including reviews.
+ * @returns {Promise<Object>} A structured insight object containing score, analysis, and metrics.
  */
 const synthesizeMovieInsight = async (movieData) => {
   // Enhanced Simulation Logic if API Key is missing
