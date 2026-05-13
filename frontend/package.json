@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "description": "CineVerse Frontend: Next.js application with a premium cinematic design and AI-driven discovery.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
