@@ -1,8 +1,18 @@
+/**
+ * Movie Controller
+ * Handles movie discovery, details, and AI-powered insights.
+ */
+
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const tmdbService = require('../services/tmdbService');
 const aiService = require('../services/aiService');
 
+/**
+ * Fetches trending movies from TMDB.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const getTrending = async (req, res) => {
   try {
     const movies = await tmdbService.getTrendingMovies();
