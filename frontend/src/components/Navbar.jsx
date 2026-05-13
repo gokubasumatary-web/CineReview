@@ -10,9 +10,15 @@ import { useRouter } from 'next/navigation';
  * Handles user authentication state, global search, and navigation links.
  */
 export default function Navbar() {
+  /** @type {[string, function]} searchQuery - Current text in the global search input. */
   const [searchQuery, setSearchQuery] = useState('');
+  
+  /** @type {[Object|null, function]} user - The currently authenticated user object. */
   const [user, setUser] = useState(null);
+  
+  /** @type {[boolean, function]} mounted - Track if component has hydrated on the client. */
   const [mounted, setMounted] = useState(false);
+  
   const router = useRouter();
 
   useEffect(() => {
