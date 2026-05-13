@@ -15,6 +15,11 @@ const GENRE_MAP = {
   10770: 'TV Movie', 53: 'Thriller', 10752: 'War', 37: 'Western'
 };
 
+/**
+ * Home Page Component
+ * The landing page of the CineVerse platform.
+ * Features a cinematic Hero section, weekly trending carousel, and AI-powered recommendations.
+ */
 export default function Home() {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [heroMovie, setHeroMovie] = useState(null);
