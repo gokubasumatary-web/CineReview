@@ -1,3 +1,7 @@
+/**
+ * Authentication Controller
+ * Handles user registration, login, and password recovery.
+ */
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
@@ -6,6 +10,11 @@ const { sendWelcomeEmail, sendPasswordResetEmail } = require('../utils/emailServ
 
 const prisma = new PrismaClient();
 
+/**
+ * Registers a new user and sends a welcome email.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const register = async (req, res) => {
   try {
     const { email, password, name } = req.body;
@@ -32,6 +41,11 @@ const register = async (req, res) => {
   }
 };
 
+/**
+ * Authenticates a user and returns a JWT token.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -53,6 +67,11 @@ const login = async (req, res) => {
   }
 };
 
+/**
+ * Generates a password reset token and sends it via email.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const forgotPassword = async (req, res) => {
   try {
     const { email } = req.body;
@@ -86,6 +105,11 @@ const forgotPassword = async (req, res) => {
   }
 };
 
+/**
+ * Validates the reset token and updates the user's password.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const resetPassword = async (req, res) => {
   try {
     const { token, password } = req.body;
