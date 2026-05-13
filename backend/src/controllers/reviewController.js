@@ -1,6 +1,15 @@
+/**
+ * Review Controller
+ * Manages user-generated movie reviews.
+ */
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
+/**
+ * Fetches reviews for a specific movie or user.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const getReviews = async (req, res) => {
   try {
     const { movieId, userId } = req.query;
@@ -23,6 +32,11 @@ const getReviews = async (req, res) => {
   }
 };
 
+/**
+ * Creates a new movie review in the database.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const createReview = async (req, res) => {
   try {
     const { movieId, userId, content, rating } = req.body;
