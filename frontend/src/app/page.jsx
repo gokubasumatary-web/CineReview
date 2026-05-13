@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import MovieCard from '@/components/MovieCard';
+import SectionHeader from '@/components/SectionHeader';
 
 const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
 const BACKEND_URL = 'http://localhost:5000/api';
@@ -108,12 +109,6 @@ export default function Home() {
         <section className="py-32 px-margin-mobile md:px-margin-desktop space-y-12 bg-surface-dim relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
           
-import MovieCard from '@/components/MovieCard';
-import SectionHeader from '@/components/SectionHeader';
-
-// ... (skipping constants)
-
-// Inside Home component:
           <div className="flex justify-between items-end relative z-10">
             <SectionHeader 
               title="Trending Now" 
