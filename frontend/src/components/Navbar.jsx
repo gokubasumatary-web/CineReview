@@ -4,6 +4,11 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
+/**
+ * Navbar Component
+ * The primary navigation header for the application.
+ * Handles user authentication state, global search, and navigation links.
+ */
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [user, setUser] = useState(null);
