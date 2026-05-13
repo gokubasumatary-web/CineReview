@@ -7,6 +7,14 @@ import MovieCard from '@/components/MovieCard';
 
 const BACKEND_URL = 'http://localhost:5000/api';
 
+/**
+ * Watchlist Page Component
+ * Displays the user's personal collection of movies.
+ * Features:
+ * - Secure access (Login required).
+ * - Multi-stage data fetching (Backend Watchlist IDs -> TMDB Details).
+ * - Empty state and loading state handling.
+ */
 export default function WatchlistPage() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
