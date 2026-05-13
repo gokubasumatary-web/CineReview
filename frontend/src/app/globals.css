@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/**
+ * CineVerse Design System
+ * Defines the cinematic visual identity using CSS variables and Tailwind theme extensions.
+ * Brand Identity: High-contrast Dark Mode with Red/Indigo accents.
+ */
 :root {
   --background: #131313;
   --foreground: #e5e2e1;
