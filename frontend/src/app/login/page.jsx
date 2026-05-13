@@ -4,6 +4,15 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+/**
+ * Login Page Component
+ * Provides a secure entry point for users.
+ * Features:
+ * - Email/Password authentication.
+ * - Password visibility toggle.
+ * - Persistent session storage (localStorage).
+ * - Responsive cinematic design.
+ */
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');
