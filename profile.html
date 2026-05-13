@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#131313",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-variant": "#353534",
+                    "secondary-fixed-dim": "#e9c400",
+                    "primary-fixed": "#ffdad5",
+                    "outline": "#af8782",
+                    "error": "#ffb4ab",
+                    "background": "#131313",
+                    "primary-fixed-dim": "#ffb4aa",
+                    "on-error": "#690005",
+                    "on-tertiary": "#1000a9",
+                    "primary": "#ffb4aa",
+                    "on-surface-variant": "#e9bcb6",
+                    "outline-variant": "#5e3f3b",
+                    "secondary-container": "#ffdb3c",
+                    "surface-container-highest": "#353534",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-bright": "#393939",
+                    "primary-container": "#e50914",
+                    "tertiary-container": "#5e61ec",
+                    "secondary-fixed": "#ffe16d",
+                    "on-tertiary-container": "#fcf8ff",
+                    "surface-container-low": "#1c1b1b",
+                    "tertiary": "#c0c1ff",
+                    "on-secondary-container": "#725f00",
+                    "on-secondary-fixed": "#221b00",
+                    "on-tertiary-fixed-variant": "#2f2ebe",
+                    "secondary": "#fff9ef",
+                    "inverse-primary": "#c0000c",
+                    "surface-container-high": "#2a2a2a",
+                    "surface": "#131313",
+                    "on-surface": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#930007",
+                    "tertiary-fixed-dim": "#c0c1ff",
+                    "surface-container": "#201f1f",
+                    "on-primary": "#690003",
+                    "tertiary-fixed": "#e1e0ff",
+                    "on-primary-fixed": "#410001",
+                    "on-secondary": "#3a3000",
+                    "on-tertiary-fixed": "#07006c",
+                    "inverse-on-surface": "#313030",
+                    "on-primary-container": "#fff7f6",
+                    "surface-tint": "#ffb4aa",
+                    "on-background": "#e5e2e1",
+                    "on-secondary-fixed-variant": "#544600"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "sm": "12px",
+                    "margin-desktop": "64px",
+                    "md": "24px",
+                    "xl": "80px",
+                    "gutter": "24px",
+                    "lg": "48px",
+                    "base": "8px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "h1-hero": ["Spline Sans"],
+                    "label-caps": ["Space Grotesk"],
+                    "h2-title": ["Spline Sans"],
+                    "rating-num": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1-hero": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "h2-title": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "rating-num": ["20px", {"lineHeight": "1", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+        }
+        .glass-surface {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ai-gradient-border {
+            position: relative;
+            background: rgba(13, 13, 13, 0.8);
+            border-radius: 1rem;
+        }
+        .ai-gradient-border::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: 1rem;
+            padding: 1px;
+            background: linear-gradient(45deg, #e50914, #5e61ec, #c0000c);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-md bg-background text-on-background">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-black/40 backdrop-blur-xl border-b border-white/10 font-['Spline_Sans'] tracking-tight shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black italic tracking-tighter text-red-600 dark:text-red-600">CineReview</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Home</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Browse</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Watchlist</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Reviews</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-red-600 w-64" placeholder="Search films..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-slate-400 hover:text-white transition-all">notifications</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-red-600/50">
+<img alt="User profile avatar" data-alt="A professional headshot of a person with a creative flair, set against a dark, moody cinematic studio background with soft red rim lighting. The individual has a confident expression, and the overall image quality is crisp with high contrast and shallow depth of field, reflecting a high-end film industry professional's profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7JncZm7Bimo78NfZeU0OwrO75snXdUwvW5tBzYKxAiAOWjvjftsFMDT045Zo_34I8-d5T8vJB2oxHpwkCqsdaixU5vzW2X4eLuytBlV6FeBdVFSJNG4ROhuq6B1rmIGw5BeStRkD__IUeLJPueYwRBW1furhy4FOIzUW5k2I1K9yofYBsp_5Gck65C-BiGnRDqoJ5i4QvNIFSW6jyI4H9BBUUFvwAkrgGcQYevrIUMy1ZIMmDDbwXWgqjz0PBpMNUEim403VLHt4"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full py-8 w-64 bg-neutral-950/80 backdrop-blur-2xl border-r border-white/10 z-40 pt-24">
+<div class="px-6 mb-10 flex items-center gap-3">
+<div class="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-weight="fill">movie</span>
+</div>
+<div>
+<h2 class="text-sm font-black text-red-600 uppercase tracking-widest">CineReview</h2>
+<p class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">AI-Powered Cinema</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Spline_Sans'] text-sm">Home</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-['Spline_Sans'] text-sm">Discover</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-['Spline_Sans'] text-sm">AI Insights</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">movie_filter</span>
+<span class="font-['Spline_Sans'] text-sm">Watchlist</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-red-600/10 text-red-500 border-r-4 border-red-600 transition-all rounded-xl rounded-r-none translate-x-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Spline_Sans'] text-sm">Profile</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Spline_Sans'] text-sm">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full bg-red-600 text-white font-bold py-3 rounded-xl shadow-lg shadow-red-600/20 hover:scale-[1.02] active:scale-95 transition-all text-sm">
+                Upgrade to Pro
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 pb-24 md:pb-8 px-4 md:px-margin-desktop min-h-screen">
+<!-- Profile Header Section -->
+<div class="relative w-full rounded-3xl overflow-hidden mb-10 h-72">
+<img alt="Cinematic background" class="w-full h-full object-cover opacity-40" data-alt="A wide cinematic shot of a classic Art Deco movie palace interior at night. The seating is plush red velvet, and a soft golden glow emanates from the screen which is out of focus. The atmosphere is nostalgic and grand, with a heavy emphasis on deep blacks and rich scarlet tones, creating a theatrical and premium backdrop for a user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcmXJc8vHTEGGbZdTOjW0aSw1XLuvp9BRAd_alxR4NvWroRr4rdYOIZ7Xd-2uEVSfX5mRCh___4Thgu6oepYK-8Yn3cX19VgNFkoT26otcBKMYfmIWcR0W6GJXJfXD_V89jVI8QYHKaiYwbMqWkc95Aa_DRKsNNT-xRvDkask4F5xxmGzAvhrbf2NwK5P1_RoF-9sxO7mhNelo3JqV0Lx_5Ufq2D-bRkxfUt3d6Aa7OPfGrN-x5dR9RraEXsNmHRjly8TqN5CB3BM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
+<div class="absolute bottom-8 left-8 flex flex-col md:flex-row items-end gap-6">
+<div class="w-32 h-32 rounded-2xl border-4 border-background overflow-hidden shadow-2xl relative">
+<img alt="User profile avatar" data-alt="A detailed portrait of a creative individual with sharp features and a thoughtful gaze. The lighting is dramatic, using a two-point setup with a cool blue fill and a warm red rim light, characteristic of high-end cinematic photography. The background is a dark, textured studio wall, maintaining a professional and artistic vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZk-V70Nv_8ZTWtETJtJ07yAfPsuiJiHH0-mxXiDHpyCcepptTCRpPSrOgmNf0p8YNiPvnDpQzgoxrT7L7JltInWdqhaQAbibhIaS6qN6bbN2HQFp56gywLz4WvwQX-EhpmZmua69Ai3VQd-luOKN1vaAVf3ETnBreEoQ1k3ibXNtO817V0uNGgL67JbcrT-m1H_-7rKPSDkihSGeKdDV2D__vGx81cpNf0U89pcFB4BUoUfbRM6dKrkf_7Z82Yo3HSViG6MQ7eKA"/>
+</div>
+<div class="mb-2">
+<h1 class="font-h2-title text-h2-title text-white mb-1">Marcus Sterling</h1>
+<p class="text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-red-600 text-sm" data-weight="fill">verified</span>
+                        Cinephile Level 4 • AI Curator
+                    </p>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Stats & Trends -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Quick Stats -->
+<div class="glass-surface rounded-3xl p-6 grid grid-cols-2 gap-4">
+<div class="text-center p-4 bg-white/5 rounded-2xl">
+<span class="font-rating-num text-rating-num text-red-600 block">412</span>
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Watched</span>
+</div>
+<div class="text-center p-4 bg-white/5 rounded-2xl">
+<span class="font-rating-num text-rating-num text-secondary-fixed block">4.2</span>
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Avg Rating</span>
+</div>
+<div class="text-center p-4 bg-white/5 rounded-2xl">
+<span class="font-rating-num text-rating-num text-tertiary block">89</span>
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Reviews</span>
+</div>
+<div class="text-center p-4 bg-white/5 rounded-2xl">
+<span class="font-rating-num text-rating-num text-white block">12</span>
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Lists</span>
+</div>
+</div>
+<!-- Favorite Genre Chart (Mockup) -->
+<div class="glass-surface rounded-3xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-h2-title text-lg">Favorite Genres</h3>
+<span class="material-symbols-outlined text-slate-500">monitoring</span>
+</div>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-xs mb-1">
+<span>Sci-Fi</span>
+<span>38%</span>
+</div>
+<div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+<div class="bg-red-600 h-full w-[38%] shadow-[0_0_8px_rgba(229,9,20,0.5)]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs mb-1">
+<span>Drama</span>
+<span>24%</span>
+</div>
+<div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+<div class="bg-red-600/70 h-full w-[24%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs mb-1">
+<span>Thriller</span>
+<span>18%</span>
+</div>
+<div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+<div class="bg-red-600/50 h-full w-[18%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-xs mb-1">
+<span>Neo-Noir</span>
+<span>12%</span>
+</div>
+<div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full w-[12%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Feed -->
+<div class="glass-surface rounded-3xl p-6">
+<h3 class="font-h2-title text-lg mb-6">Recent Activity</h3>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-12 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Movie Poster" data-alt="A stylized, neon-lit movie poster for a sci-fi cyberpunk film. The palette is dominated by electric blues and deep reds, showing a high-tech city skyline reflected in the eye of a mysterious figure. The image captures the dark, futuristic energy of the genre with high saturation and sharp contrasts." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhN19lKdJI9vWrkRJZlIgnQKm48ClWxvCxwftLtFTvM986pothwJrnMoaGe7nhYFlDF561hLznE80BpnyYIvj-KgCT04cePAJ8GAH0jiCVZ5VIk4Q9mR6xA9GI2_WI6IfrKjCLa5W1GtQ2-FnDBHV2mx00pvKIM1XjpzT7ltQtIu6sxmxkyMcJnwwavvHqi2-Ur4BulfoCScDOATVdjEYuLHYGgiBpr2_DCbhvEsGjEiQxtzqfJFF1Dl4KlPKE6zfKLp9udcO_eLg"/>
+</div>
+<div>
+<p class="text-sm">Rated <span class="text-secondary-fixed font-bold">4.5</span> for <span class="text-white font-medium">Interstellar</span></p>
+<p class="text-xs text-slate-500">2 hours ago</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary">psychology</span>
+</div>
+<div>
+<p class="text-sm">AI generated a new <span class="text-white font-medium">Cyberpunk Collection</span></p>
+<p class="text-xs text-slate-500">Yesterday at 4:20 PM</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Interactive Tabs Content -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Tab Navigation -->
+<div class="glass-surface p-2 rounded-2xl flex gap-1">
+<button class="flex-1 py-3 rounded-xl bg-red-600 text-white font-bold text-sm">Reviews</button>
+<button class="flex-1 py-3 rounded-xl hover:bg-white/5 transition-all text-slate-400 font-medium text-sm">Watchlist</button>
+<button class="flex-1 py-3 rounded-xl hover:bg-white/5 transition-all text-slate-400 font-medium text-sm">Watched</button>
+<button class="flex-1 py-3 rounded-xl hover:bg-white/5 transition-all text-tertiary font-medium text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">auto_awesome</span> AI Picks
+                    </button>
+</div>
+<!-- AI Insights Panel -->
+<div class="ai-gradient-border p-6 shadow-[0_0_40px_rgba(94,97,236,0.2)]">
+<div class="flex items-start gap-4">
+<div class="p-3 rounded-full bg-tertiary-container text-white">
+<span class="material-symbols-outlined" data-weight="fill">psychology</span>
+</div>
+<div>
+<h4 class="font-h2-title text-base text-white mb-2">AI-Synthesized Insight</h4>
+<p class="text-sm text-slate-300 leading-relaxed mb-4">
+                                Based on your high ratings for "Blade Runner 2049" and "Arrival", our AI suggests you have a strong preference for <span class="text-red-400">Philosophical Sci-Fi</span> with slow-burn pacing and high-contrast cinematography.
+                            </p>
+<div class="flex gap-2">
+<span class="text-[10px] uppercase font-bold px-3 py-1 bg-white/5 border border-white/10 rounded-full">Atmospheric</span>
+<span class="text-[10px] uppercase font-bold px-3 py-1 bg-white/5 border border-white/10 rounded-full">Cerebral</span>
+<span class="text-[10px] uppercase font-bold px-3 py-1 bg-white/5 border border-white/10 rounded-full">Visually Stunning</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Grid (Reviews Example) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Review Card 1 -->
+<div class="glass-surface rounded-3xl overflow-hidden group">
+<div class="h-48 relative overflow-hidden">
+<img alt="Dune Review" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A wide cinematic landscape shot showing a futuristic cityscape at sunset, with a deep orange sky and glowing blue city lights. The composition is epic and scale-focused, mirroring the grand visuals of an IMAX sci-fi movie. Rich textures and atmospheric haze create a premium, immersive feeling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Ls-N2uObHGjf3taG-iYiVZ_r4NKMSkzYRsYOH5gnYMIQE12CFM4Mxi-Qja3EsUtviob1n7TJvs0f-quNRoVOaw8-DIP6zVtfIEAODvrtz_HujadW4y4PYqPfEZfu12LxxtOlcnW9Kqh5zrPpFhZ-Q-XlejpdCZHOBZcEZBUIYLWdXNlMXEf0S6Rty-iHpaC3d3j6D3GKSBpVaUaIXf5ukNL0COn2Kmr15OPNaPMGI-h3cV4WF8xzjdtjShffaUBfdulItXUk0Ks"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-weight="fill">star_half</span>
+</div>
+</div>
+<div class="p-6">
+<h5 class="font-h2-title text-base mb-2">Dune: Part Two</h5>
+<p class="text-sm text-slate-400 line-clamp-3">
+                                Villeneuve has mastered the art of the visual scale. The sound design alone is worth the theater price. Truly a landmark in science fiction cinema...
+                            </p>
+<div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
+<span class="text-xs text-slate-500 uppercase font-bold tracking-widest">March 12, 2024</span>
+<button class="text-red-500 text-xs font-bold uppercase tracking-wider flex items-center gap-1">Read More <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<!-- Review Card 2 -->
+<div class="glass-surface rounded-3xl overflow-hidden group">
+<div class="h-48 relative overflow-hidden">
+<img alt="Oppenheimer Review" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A macro shot of a classic 35mm film reel spinning on a projector. The lighting is warm and amber, catching the metallic sheen of the reel and the delicate texture of the film strip. The bokeh in the background shows soft, out-of-focus light orbs, evoking the cozy atmosphere of an old cinema." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhi5PHPJz1m_Z5u79FeMRBZJrtKaYAOzqfqfMwyW3PPjG0g3oXJYqtHEWagaBQ5BaqNejNr5P7jFeYRSzn6GhhGfT1Sms1qr4E38kdMHkEcWnkv0DfxIueHY9iwUj_7s7frZTPKX14w6DFGP_ruL_Ta07KAVgmDDED3j4UOtNfNCPAGem_7AUYT2gRiT53aNxzlJwoDmJnQhW2Y4BHQFPbg5HHyeKGBiPDYQKLWccgqsBdzFhqIsZEHgtaqAARLNnP_4Bp_gqTPTo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-weight="fill">star</span>
+<span class="material-symbols-outlined text-secondary-fixed text-sm" data-weight="fill">star</span>
+</div>
+</div>
+<div class="p-6">
+<h5 class="font-h2-title text-base mb-2">Oppenheimer</h5>
+<p class="text-sm text-slate-400 line-clamp-3">
+                                Nolan's most intimate epic. The tension is palpable in every frame, and Murphy's performance is absolutely haunting. A masterclass in pacing...
+                            </p>
+<div class="mt-4 pt-4 border-t border-white/5 flex justify-between items-center">
+<span class="text-xs text-slate-500 uppercase font-bold tracking-widest">Feb 28, 2024</span>
+<button class="text-red-500 text-xs font-bold uppercase tracking-wider flex items-center gap-1">Read More <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Explore CTA Section -->
+<div class="glass-surface p-12 rounded-3xl text-center relative overflow-hidden border-2 border-white/10">
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-red-600/10 blur-[100px] rounded-full"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-tertiary-container/10 blur-[100px] rounded-full"></div>
+<h3 class="font-h2-title text-2xl mb-4 relative z-10">Running out of things to watch?</h3>
+<p class="text-slate-400 mb-8 max-w-md mx-auto relative z-10">Let CineReview's advanced AI engine scan 50,000+ titles to find your next favorite based on your unique profile.</p>
+<button class="bg-white text-black px-8 py-3 rounded-full font-bold hover:bg-slate-200 transition-all relative z-10">Start AI Discovery</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 md:hidden bg-black/80 backdrop-blur-lg border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Browse</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-red-600 bg-red-600/10 rounded-xl px-4 py-1 scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Profile</span>
+</a>
+</nav>
+</body></html>

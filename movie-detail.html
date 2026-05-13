@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "surface-dim": "#131313",
+                "error-container": "#93000a",
+                "inverse-surface": "#e5e2e1",
+                "surface-variant": "#353534",
+                "secondary-fixed-dim": "#e9c400",
+                "primary-fixed": "#ffdad5",
+                "outline": "#af8782",
+                "error": "#ffb4ab",
+                "background": "#131313",
+                "primary-fixed-dim": "#ffb4aa",
+                "on-error": "#690005",
+                "on-tertiary": "#1000a9",
+                "primary": "#ffb4aa",
+                "on-surface-variant": "#e9bcb6",
+                "outline-variant": "#5e3f3b",
+                "secondary-container": "#ffdb3c",
+                "surface-container-highest": "#353534",
+                "surface-container-lowest": "#0e0e0e",
+                "surface-bright": "#393939",
+                "primary-container": "#e50914",
+                "tertiary-container": "#5e61ec",
+                "secondary-fixed": "#ffe16d",
+                "on-tertiary-container": "#fcf8ff",
+                "surface-container-low": "#1c1b1b",
+                "tertiary": "#c0c1ff",
+                "on-secondary-container": "#725f00",
+                "on-secondary-fixed": "#221b00",
+                "on-tertiary-fixed-variant": "#2f2ebe",
+                "secondary": "#fff9ef",
+                "inverse-primary": "#c0000c",
+                "surface-container-high": "#2a2a2a",
+                "surface": "#131313",
+                "on-surface": "#e5e2e1",
+                "on-error-container": "#ffdad6",
+                "on-primary-fixed-variant": "#930007",
+                "tertiary-fixed-dim": "#c0c1ff",
+                "surface-container": "#201f1f",
+                "on-primary": "#690003",
+                "tertiary-fixed": "#e1e0ff",
+                "on-primary-fixed": "#410001",
+                "on-secondary": "#3a3000",
+                "on-tertiary-fixed": "#07006c",
+                "inverse-on-surface": "#313030",
+                "on-primary-container": "#fff7f6",
+                "surface-tint": "#ffb4aa",
+                "on-background": "#e5e2e1",
+                "on-secondary-fixed-variant": "#544600"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "margin-mobile": "16px",
+                "sm": "12px",
+                "margin-desktop": "64px",
+                "md": "24px",
+                "xl": "80px",
+                "gutter": "24px",
+                "lg": "48px",
+                "base": "8px",
+                "xs": "4px"
+              },
+              "fontFamily": {
+                "body-md": ["Inter"],
+                "h1-hero": ["Spline Sans"],
+                "label-caps": ["Space Grotesk"],
+                "h2-title": ["Spline Sans"],
+                "rating-num": ["Space Grotesk"]
+              },
+              "fontSize": {
+                "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "h1-hero": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                "h2-title": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "rating-num": ["20px", {"lineHeight": "1", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ai-gradient-border {
+            position: relative;
+            background: rgba(19, 19, 19, 0.8);
+            border-radius: 1rem;
+        }
+        .ai-gradient-border::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, #e50914, #5e61ec, #c0c1ff);
+            z-index: -1;
+            border-radius: inherit;
+            padding: 1px;
+        }
+        .text-glow-red {
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface-dim text-on-surface font-body-md overflow-x-hidden selection:bg-primary-container selection:text-white">
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-black/40 backdrop-blur-xl font-['Spline_Sans'] tracking-tight border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black italic tracking-tighter text-red-600 dark:text-red-600">CineReview</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Home</a>
+<a class="text-red-500 font-bold border-b-2 border-red-600 pb-1" href="#">Browse</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Watchlist</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Reviews</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:bg-white/5 transition-all duration-300 rounded-full">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 transition-all duration-300 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full border border-white/20" data-alt="A professional and sleek headshot portrait of a young man with a friendly expression. He has short styled dark hair and subtle stubble. The lighting is soft and cinematic, with a dark, blurred studio background that emphasizes his features and creates a premium aesthetic in line with the CineReview platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB33mIlnz-8Ooow7weFiXyiEq4ajGOn795DqXAMEgKwUphzScC6oaZb0gdlC6qhLWGrnHw4_Q1Pbh9r8f2JpaclfVAnnmKGaBs_YD0wNYh21LQAOlgPyyF41cETN-eBjZ2RloXnUCrHH_AVT_-8L5MqVm97119h-fvqq4YilHKPWLkskexWbwK37a9y9SLhjSZFKKZnxTrj0Iuzk16Fs7HprLSpS5xgpPqvAioff00obZhZobT6wqcwhhotOgL3BLCu4SulfaVUFQo"/>
+</div>
+</header>
+<main class="relative pt-20">
+<section class="relative w-full h-[870px] flex flex-col justify-end overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A wide cinematic landscape shot of a neon-drenched futuristic city at night, reflecting off wet asphalt streets. The scene is dominated by deep blacks and vibrant reds, with hints of indigo light casting dramatic shadows. The atmosphere is dense and atmospheric, capturing the high-stakes, moody energy of a sci-fi thriller movie setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA69WyhcSF45QYX4kpczx9nLiPoyf8bSm85d_3lFnxqrHogZVKnerIuQ2Ii-UBb-sQwVWr5WNPsO6XIlmQ3FcK9pEHQxTBdggXh6Jt8meK8Eeu8A7jc_e7wfrBXTry3HJh3PNxuxEf_s5kHxVt6sD-sHHvDdSCafyUxzepLxd49E5mZU3EHTXuWoowEGyroEBMEbrfPP3JJ5NkG-KGgnUbGvV9L91bqfMNIpw4lobW9TMmgJKGVIknr8ylWgxNE-GicnQYslAZjgFs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-surface-dim/40 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-dim via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop pb-xl grid grid-cols-1 md:grid-cols-12 gap-gutter items-end">
+<div class="md:col-span-3 hidden md:block group">
+<div class="relative overflow-hidden rounded-xl shadow-2xl border border-white/10 aspect-[2/3]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A striking movie poster design featuring a central silhouette of a figure walking into a bright, white light against a background of deep red and dark grey clouds. The poster uses dramatic typography and high-contrast lighting to create a sense of mystery and epic scale. The overall aesthetic is professional, modern, and cinematic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKap4qyuWld_DgDNRiWlUP9YhvmqSX7GBLSYYRlfQJILqheJLy0tF78x02Gi6UI_pAROvjfrExvsvOnCgGeeanmm8GKR0d_JY8-rXCe61m8ag8pasHX417Si3SZr1E0hnkYtkOctrfB7qgdWocQWp3FS_txDgSj5PsngDeni1pPz9F1vcp5RFQFv7vjo-hC0ah06og5OGc2pPMeAu2eUjCG838fGGebhO1uLDxvbrP1wMonORa7WDcZ9Z48ygGTOu6CyhLmE9513Q"/>
+</div>
+</div>
+<div class="md:col-span-9 space-y-6">
+<div class="space-y-2">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-3 py-1 glass-panel rounded-full font-label-caps text-label-caps text-primary uppercase">Sci-Fi</span>
+<span class="px-3 py-1 glass-panel rounded-full font-label-caps text-label-caps text-primary uppercase">Action</span>
+<span class="px-3 py-1 glass-panel rounded-full font-label-caps text-label-caps text-primary uppercase">Adventure</span>
+</div>
+<h1 class="font-h1-hero text-h1-hero text-white max-w-4xl tracking-tighter">Beyond the Horizon</h1>
+<p class="text-body-md text-on-surface-variant max-w-2xl font-body-md">
+                            In a world where time is the ultimate currency, one rebel discovers a way to break the cycle and reclaim the future. A breathtaking visual masterpiece from director Marcus Thorne.
+                        </p>
+</div>
+<div class="flex flex-wrap gap-4 items-center">
+<button class="bg-primary-container text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-red-900/20">
+<span class="material-symbols-outlined" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+                            Watch Trailer
+                        </button>
+<button class="glass-panel text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-white/10 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+                            Add to Watchlist
+                        </button>
+<div class="flex items-center gap-2 ml-4">
+<div class="flex gap-1 text-[#FFD700]">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star_half">star_half</span>
+</div>
+<span class="font-rating-num text-rating-num text-white">4.8</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="px-margin-mobile md:px-margin-desktop py-xl grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<div class="lg:col-span-8 space-y-12">
+<div class="ai-gradient-border p-8 shadow-2xl relative overflow-hidden group">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-tertiary-container/20 blur-[100px] rounded-full"></div>
+<div class="flex items-center justify-between mb-8 relative z-10">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-gradient-to-tr from-primary-container to-tertiary-container rounded-lg shadow-lg">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="psychology">psychology</span>
+</div>
+<div>
+<h3 class="font-h2-title text-h2-title text-white flex items-center gap-2">
+                                    AI Insight
+                                    <span class="text-xs font-label-caps bg-tertiary-container/30 text-tertiary px-2 py-0.5 rounded border border-tertiary/20">PREMIUM</span>
+</h3>
+<p class="text-xs font-label-caps text-on-surface-variant uppercase tracking-widest">Synthesized from 12,400+ reviews</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-3xl font-black text-white text-glow-red">94%</span>
+<p class="text-xs font-label-caps text-primary uppercase">Critical Acclaim</p>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-8 relative z-10">
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-label-caps text-on-surface-variant">
+<span>Cinematography &amp; Visuals</span>
+<span class="text-white">98%</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full w-[98%] bg-primary-container rounded-full shadow-[0_0_8px_rgba(229,9,20,0.5)]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-label-caps text-on-surface-variant">
+<span>Emotional Depth</span>
+<span class="text-white">82%</span>
+</div>
+<div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full w-[82%] bg-tertiary-container rounded-full shadow-[0_0_8px_rgba(94,97,236,0.5)]"></div>
+</div>
+</div>
+</div>
+<div class="glass-panel p-4 rounded-xl border-white/5">
+<p class="text-body-md text-on-surface italic font-light leading-relaxed">
+                                "The consensus highlights a visually staggering epic that pushes the boundaries of VFX. While the narrative occasionally dips into familiar tropes, the AI suggests fans of Blade Runner and Interstellar will find its philosophical core deeply rewarding."
+                            </p>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div class="flex items-center justify-between">
+<h2 class="font-h2-title text-h2-title text-white">Top Cast</h2>
+<button class="text-primary font-label-caps hover:underline">View All</button>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-4 scrollbar-hide no-scrollbar">
+<div class="flex-none w-40 space-y-3 text-center group cursor-pointer">
+<div class="w-40 h-40 rounded-full overflow-hidden border-2 border-white/5 group-hover:border-primary-container transition-colors duration-300">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A portrait of a male actor with a charismatic and intense look. The image is captured with professional studio lighting that creates depth and emphasizes his features. The background is a muted, dark tone that keeps the focus entirely on the subject, fitting the high-end cinematic style of the movie details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_jfHno5VPFbq49qShUdttyJfG36XC5di56GK9UJ98lRHNuC87POYX41VtIRsz0nEbOjng3ig4IxLfdaA9CbAcnclDMz2Vm6oHAPpQdtcGCA9DjHOdwTQcwWoGjpIQWCJQLc8G9fNfqFckzFkEqom3h4uiiBZKe_udHDM9H_9PtabeIhWGx12pi1zd0FTSDlfaqWtJbrG9613yy9N_BofZH6pmWcdoiqdnymka0VpnaLs3tITJz2vKTwZMESiCy7FAnu_Ec94KZhY"/>
+</div>
+<h4 class="font-bold text-white group-hover:text-primary transition-colors">Alex Rivera</h4>
+<p class="text-xs text-on-surface-variant font-label-caps uppercase">Leo Vance</p>
+</div>
+<div class="flex-none w-40 space-y-3 text-center group cursor-pointer">
+<div class="w-40 h-40 rounded-full overflow-hidden border-2 border-white/5 group-hover:border-primary-container transition-colors duration-300">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A close-up portrait of a female actress with a confident and soulful expression. She has long flowing hair and the lighting highlights her eyes and facial structure. The aesthetic is clean and modern, evoking a high-quality production feel suitable for a leading role in a major cinematic film." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFlL8mrDDWunQ7_-nr4eKKUcnMWp4t8nAXyc6yaOxO0uEhpOL-ZnelgVUTXV8l6uHJ58d8Hy9wtVO8SeDi1HxjabNCCU9GqsIstFJFYVOjDm4ReVmIy9zu6LVru2fO72thQrt7AOozTMu_x7s7AaakbtOWYfIjIQWaHDpiGvL7gDE-lFATaFPpdlCHHQlHDGX-jMKtE63EP1rFeBgOWBUm_fw9rxkiSu11mYi5_HcpJVh-hl5mIX-l9HXTlLgQPqZTWkCMKUj3RtY"/>
+</div>
+<h4 class="font-bold text-white group-hover:text-primary transition-colors">Sarah Chen</h4>
+<p class="text-xs text-on-surface-variant font-label-caps uppercase">Dr. Elara</p>
+</div>
+<div class="flex-none w-40 space-y-3 text-center group cursor-pointer">
+<div class="w-40 h-40 rounded-full overflow-hidden border-2 border-white/5 group-hover:border-primary-container transition-colors duration-300">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A portrait of a seasoned male actor with a rugged, expressive face. He has grey-streaked hair and an authoritative presence. The lighting is cinematic and high-contrast, casting soft shadows that suggest a complex character role in a dramatic film." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX2rDbXobisnaLREzihIo7G1RN5BpPBu6uJcYBDK9ALl5GhToRQ0A_eItErLkX3gFqQpzgq47TW_Uh-KjqKH6Kz3FkRgS5MjwLievyI2wdn-k0OlyHJnWJcfHClIPIEEyL5vKub41HMS8xSlS_tuhHM3H-OIlMkRfaVRu2Oc0TAN3drOmfK8_S-6BP3okJrNerrqHgFkz1ZXve7d-DKvsc3cpzhc4iTFTFEGgdOYf2jUVhdPpIJIs7WQhvUTz0Q8RIyUgxuIDLOF8"/>
+</div>
+<h4 class="font-bold text-white group-hover:text-primary transition-colors">Marcus Sterling</h4>
+<p class="text-xs text-on-surface-variant font-label-caps uppercase">Commander Vane</p>
+</div>
+<div class="flex-none w-40 space-y-3 text-center group cursor-pointer">
+<div class="w-40 h-40 rounded-full overflow-hidden border-2 border-white/5 group-hover:border-primary-container transition-colors duration-300">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A portrait of a young actress with a fierce and determined look. Her expression is nuanced and captivating. The photography utilizes warm amber tones and soft focus backgrounds, emphasizing her character's presence and star power in a futuristic setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBu46wF5Sw5vqql1Wsb-kYZmwMyPdlRHz7uhO6bALz3DnzZlqG8PdolmjWdh3O_9aisdKSUGJxHftV5N3fxeyeID4BVdQS2W1xoR0YZ8udJ_1u7TBghU6kU1Gzfh8bMfMCmM5XRgHgRw4zOP0SOlbYSJLZfLX39HoJEBf5bsSY3aUb9t_xlxWeRiBAbavpdPdkKOOmFca_t09aiLcaYDFOGuyng2aEcdIgsuahGP1g_JhPKypzniaRmLhDZ6QL73-Fvk1hdM_IMF6Y"/>
+</div>
+<h4 class="font-bold text-white group-hover:text-primary transition-colors">Aria Blake</h4>
+<p class="text-xs text-on-surface-variant font-label-caps uppercase">Kyra</p>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div class="flex items-center justify-between">
+<h2 class="font-h2-title text-h2-title text-white">Community Reviews</h2>
+<button class="bg-white/5 hover:bg-white/10 px-4 py-2 rounded-lg font-label-caps text-xs transition-colors border border-white/10">Write Review</button>
+</div>
+<div class="space-y-4">
+<div class="glass-panel p-6 rounded-2xl border-white/5 flex gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A headshot of a female user for a profile thumbnail. She has a natural, friendly smile and is framed in a bright, outdoor setting with soft sunlight. The photo is clean and high-resolution, suitable for a professional-grade user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkYzrieUbOcuvzVR4z3V4VRKXT9qRV0sYe59l8JOFKFxwvaVmG9xngB7TXOh8qOfovLv3pkQPdZIxniAz90uPqy6qMK18iqu7UxeJFvwixo4Qdj488t2dJJgnQcXf4l7QHld6LxOMSlrFZPtrsOT5jokPtfs8KxhdkadGvbYBWEDIdYL8FiGql_KZJ6ttdX2K940MH9hpHbGP6DOpMOTFvf3c-WwnG_orOqLAk9i2PEcyQX2PZf-u2zlJEzPsS2e0SBEp6k0h_CQ0"/>
+<div class="flex-1 space-y-2">
+<div class="flex items-center justify-between">
+<h4 class="font-bold text-white">Elena G.</h4>
+<div class="flex text-[#FFD700] scale-75">
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+<span class="material-symbols-outlined" data-icon="star" data-weight="fill">star</span>
+</div>
+</div>
+<p class="text-body-md text-on-surface-variant leading-relaxed">
+                                    The visual effects alone are worth the price of admission. It's rare to see a film that takes so many risks and actually lands most of them. The third act is absolutely breathtaking.
+                                </p>
+<div class="flex items-center gap-4 pt-2">
+<button class="flex items-center gap-1 text-xs font-label-caps text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span>
+                                        2.4k
+                                    </button>
+<button class="flex items-center gap-1 text-xs font-label-caps text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="reply">reply</span>
+                                        Reply
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside class="lg:col-span-4 space-y-8">
+<div class="glass-panel p-8 rounded-2xl border-white/5 space-y-6 sticky top-28">
+<h3 class="font-bold text-xl text-white">Movie Info</h3>
+<div class="grid grid-cols-2 gap-y-6">
+<div>
+<p class="text-xs font-label-caps text-on-surface-variant uppercase">Runtime</p>
+<p class="text-white font-medium">2h 45m</p>
+</div>
+<div>
+<p class="text-xs font-label-caps text-on-surface-variant uppercase">Released</p>
+<p class="text-white font-medium">Nov 24, 2024</p>
+</div>
+<div>
+<p class="text-xs font-label-caps text-on-surface-variant uppercase">Budget</p>
+<p class="text-white font-medium">$180M</p>
+</div>
+<div>
+<p class="text-xs font-label-caps text-on-surface-variant uppercase">Rating</p>
+<p class="text-white font-medium">PG-13</p>
+</div>
+</div>
+<div class="pt-6 border-t border-white/10">
+<p class="text-xs font-label-caps text-on-surface-variant uppercase mb-2">Director</p>
+<p class="text-white font-bold">Marcus Thorne</p>
+</div>
+<div>
+<p class="text-xs font-label-caps text-on-surface-variant uppercase mb-2">Studios</p>
+<p class="text-white">Nebula Pictures, Horizon Media</p>
+</div>
+<div class="pt-6">
+<h4 class="text-xs font-label-caps text-on-surface-variant uppercase mb-4">Stream On</h4>
+<div class="flex gap-3">
+<div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="movie">movie</span>
+</div>
+<div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-secondary-fixed-dim" data-icon="play_circle">play_circle</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 md:hidden bg-black/80 backdrop-blur-lg border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-red-600 bg-red-600/10 rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Browse</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Profile</span>
+</a>
+</nav>
+<footer class="bg-surface-container-lowest py-16 px-margin-mobile md:px-margin-desktop border-t border-white/5 mb-16 md:mb-0">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="space-y-4">
+<span class="text-2xl font-black italic tracking-tighter text-red-600">CineReview</span>
+<p class="text-on-surface-variant text-sm">Deep cinema database powered by advanced AI insights for true enthusiasts.</p>
+</div>
+<div>
+<h5 class="font-bold text-white mb-4">Navigation</h5>
+<ul class="space-y-2 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">All Movies</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">TV Series</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Top 250</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">AI Discovery</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-white mb-4">Support</h5>
+<ul class="space-y-2 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Use</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-bold text-white mb-4">Newsletter</h5>
+<div class="flex gap-2">
+<input class="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-primary-container w-full" placeholder="Email address" type="email"/>
+<button class="bg-primary-container text-white px-4 py-2 rounded-lg text-sm font-bold">Join</button>
+</div>
+</div>
+</div>
+<div class="mt-16 pt-8 border-t border-white/5 text-center text-xs text-on-surface-variant">
+            © 2024 CineReview. AI Analysis by CineCore V2.0
+        </div>
+</footer>
+</body></html>

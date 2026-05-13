@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ai-glow {
+      box-shadow: 0 0 20px rgba(229, 9, 20, 0.15);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(229, 9, 20, 0.5);
+      border-radius: 10px;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-dim": "#131313",
+            "error-container": "#93000a",
+            "inverse-surface": "#e5e2e1",
+            "surface-variant": "#353534",
+            "secondary-fixed-dim": "#e9c400",
+            "primary-fixed": "#ffdad5",
+            "outline": "#af8782",
+            "error": "#ffb4ab",
+            "background": "#131313",
+            "primary-fixed-dim": "#ffb4aa",
+            "on-error": "#690005",
+            "on-tertiary": "#1000a9",
+            "primary": "#ffb4aa",
+            "on-surface-variant": "#e9bcb6",
+            "outline-variant": "#5e3f3b",
+            "secondary-container": "#ffdb3c",
+            "surface-container-highest": "#353534",
+            "surface-container-lowest": "#0e0e0e",
+            "surface-bright": "#393939",
+            "primary-container": "#e50914",
+            "tertiary-container": "#5e61ec",
+            "secondary-fixed": "#ffe16d",
+            "on-tertiary-container": "#fcf8ff",
+            "surface-container-low": "#1c1b1b",
+            "tertiary": "#c0c1ff",
+            "on-secondary-container": "#725f00",
+            "on-secondary-fixed": "#221b00",
+            "on-tertiary-fixed-variant": "#2f2ebe",
+            "secondary": "#fff9ef",
+            "inverse-primary": "#c0000c",
+            "surface-container-high": "#2a2a2a",
+            "surface": "#131313",
+            "on-surface": "#e5e2e1",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#930007",
+            "tertiary-fixed-dim": "#c0c1ff",
+            "surface-container": "#201f1f",
+            "on-primary": "#690003",
+            "tertiary-fixed": "#e1e0ff",
+            "on-primary-fixed": "#410001",
+            "on-secondary": "#3a3000",
+            "on-tertiary-fixed": "#07006c",
+            "inverse-on-surface": "#313030",
+            "on-primary-container": "#fff7f6",
+            "surface-tint": "#ffb4aa",
+            "on-background": "#e5e2e1",
+            "on-secondary-fixed-variant": "#544600"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "16px",
+            "sm": "12px",
+            "margin-desktop": "64px",
+            "md": "24px",
+            "xl": "80px",
+            "gutter": "24px",
+            "lg": "48px",
+            "base": "8px",
+            "xs": "4px"
+          },
+          "fontFamily": {
+            "body-md": ["Inter"],
+            "h1-hero": ["Spline Sans"],
+            "label-caps": ["Space Grotesk"],
+            "h2-title": ["Spline Sans"],
+            "rating-num": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "h1-hero": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+            "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+            "h2-title": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+            "rating-num": ["20px", {"lineHeight": "1", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-surface-dim text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar Implementation -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-black/40 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-8">
+<h1 class="text-2xl font-black italic tracking-tighter text-red-600 dark:text-red-600 uppercase">CineReview</h1>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-slate-400 hover:text-white transition-colors font-['Spline_Sans'] tracking-tight" href="#">Home</a>
+<a class="text-red-500 font-bold border-b-2 border-red-600 pb-1 font-['Spline_Sans'] tracking-tight" href="#">Browse</a>
+<a class="text-slate-400 hover:text-white transition-colors font-['Spline_Sans'] tracking-tight" href="#">Watchlist</a>
+<a class="text-slate-400 hover:text-white transition-colors font-['Spline_Sans'] tracking-tight" href="#">Reviews</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
+<input class="bg-white/5 border border-white/10 rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:outline-none focus:ring-1 focus:ring-red-600 transition-all" placeholder="Search films, directors..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-slate-400 hover:text-white p-2 hover:bg-white/5 rounded-full transition-all">notifications</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A high-quality professional portrait of a person with short hair, softly lit with warm amber tones against a dark, moody cinematic background. The image has a shallow depth of field, emphasizing the crisp detail of the subject's expression. The overall aesthetic is polished and modern, fitting for a premium film review platform profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsNWIV4fVzvV-BF8TdmLLYIHGVccfjggsuNpWmBtgm_rZSWSboI-kM_JijWF_91wDg33MC3S32kMkeJ_H0Nzt-i_aSt6Wtf28gTFA1e8Rr-aboeh0Es0bWqHtjEW9zUMDTfqTVkbiQB5SXoweLzF6x0xU8k5Rrvk3WhrhyQwy6H_kuO_wHLPeU-ihgYmqit26DekmJkdaS3abdKQH2cghjfL8mZ9O4eWyVqKlY41PfFj3gUDmXh2ARIqF9cG5g4PhuOa9ym3YnbQ8"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile, Visible on Desktop) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-full py-8 w-64 bg-neutral-950/80 backdrop-blur-2xl border-r border-white/10 shadow-2xl z-40 mt-20">
+<div class="px-6 mb-8">
+<p class="text-xl font-black text-red-600 uppercase font-['Spline_Sans']">CineReview</p>
+<p class="text-xs text-slate-500 uppercase tracking-widest mt-1">AI-Powered Cinema</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Spline_Sans'] text-sm">Home</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-red-600/10 text-red-500 border-r-4 border-red-600 active:translate-x-1 transition-all rounded-l-xl" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-['Spline_Sans'] text-sm">Discover</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-['Spline_Sans'] text-sm">AI Insights</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">movie_filter</span>
+<span class="font-['Spline_Sans'] text-sm">Watchlist</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Spline_Sans'] text-sm">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full py-4 bg-red-600 text-white font-bold rounded-xl shadow-lg shadow-red-600/20 hover:bg-red-700 transition-all">Upgrade to Pro</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 mt-20 p-6 md:p-10 min-h-screen">
+<!-- Hero/Search Section -->
+<section class="mb-12">
+<div class="relative rounded-3xl overflow-hidden h-[400px] flex flex-col justify-end p-8 md:p-12 mb-10">
+<div class="absolute inset-0 z-0">
+<img alt="Cinematic background" class="w-full h-full object-cover" data-alt="A wide cinematic landscape of a futuristic neon city under a rainy night, with vibrant red and blue light reflections shimmering on wet pavement. The scene is shot with high-end anamorphic lenses, featuring soft bokeh and a deep sense of atmosphere. The lighting is dramatic and moody, dominated by the brand's primary red and dark charcoal tones, creating an immersive theatrical experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOj7LXWiB860kLl7EOw43c0wgcJqiqasy6WS1E6W2edsMXgk7yjoK_-UHYCI19YwzeCpjkILpD6SQwqDmF3XZPCUzsIQSYk7CTxS-oqru-asqJHxqsVe6wk_fVNkpB1aVZXv5VvVekNVa1ZbVARcZsPAdhqhmac1LvZJdmbZEYxIdK69D_6FAwDESjWiHp465ckdyaF25tioqRA-W-IIFEho-FoNiRH0gq9dnQZne2dwtaY2BUXsGUo-t2GbetOGUh4MGJcHOSl1g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-surface-dim/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-2xl">
+<h2 class="font-h1-hero text-h1-hero text-white mb-4">Explore Cinema</h2>
+<p class="text-body-md font-body-md text-slate-300 mb-8 max-w-lg">Discover your next obsession with AI-powered recommendations and deep-dive critical analysis from our global community.</p>
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-tertiary-container rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative flex items-center bg-surface-container-low/80 backdrop-blur-xl border border-white/10 rounded-2xl p-2 pr-4">
+<span class="material-symbols-outlined px-4 text-slate-400">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-white w-full py-3 text-lg placeholder:text-slate-500" placeholder="Search for titles, actors, genres..." type="text"/>
+<button class="bg-primary-container hover:bg-red-700 text-white px-6 py-2 rounded-xl font-bold transition-all">Search</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Filter Sidebar -->
+<aside class="lg:w-72 flex-shrink-0">
+<div class="glass-panel p-6 rounded-3xl sticky top-24">
+<h3 class="font-h2-title text-xl text-white mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-red-600">tune</span> Filters
+            </h3>
+<!-- Genres -->
+<div class="mb-8">
+<p class="font-label-caps text-label-caps text-slate-400 mb-4">GENRES</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 rounded-full glass-panel text-xs font-semibold text-white cursor-pointer hover:bg-red-600/20 border-red-600/30">Action</span>
+<span class="px-3 py-1.5 rounded-full glass-panel text-xs font-semibold text-slate-400 cursor-pointer hover:text-white transition-colors">Sci-Fi</span>
+<span class="px-3 py-1.5 rounded-full glass-panel text-xs font-semibold text-slate-400 cursor-pointer hover:text-white transition-colors">Drama</span>
+<span class="px-3 py-1.5 rounded-full glass-panel text-xs font-semibold text-slate-400 cursor-pointer hover:text-white transition-colors">Horror</span>
+<span class="px-3 py-1.5 rounded-full glass-panel text-xs font-semibold text-white bg-red-600/20 border-red-600/50">Thriller</span>
+<span class="px-3 py-1.5 rounded-full glass-panel text-xs font-semibold text-slate-400 cursor-pointer hover:text-white transition-colors">Comedy</span>
+</div>
+</div>
+<!-- Release Year Range -->
+<div class="mb-8">
+<p class="font-label-caps text-label-caps text-slate-400 mb-4">RELEASE YEAR</p>
+<input class="w-full h-1 bg-surface-variant rounded-lg appearance-none cursor-pointer accent-red-600" type="range"/>
+<div class="flex justify-between mt-2 text-[10px] font-bold text-slate-500">
+<span>1960</span>
+<span>2024</span>
+</div>
+</div>
+<!-- AI Insight Toggle -->
+<div class="glass-panel p-4 rounded-2xl border-tertiary-container/30 bg-tertiary-container/5 mb-8">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-bold text-tertiary">AI Recommendation</p>
+<p class="text-[10px] text-slate-400">Personalized matching</p>
+</div>
+<div class="w-10 h-6 bg-tertiary-container/40 rounded-full relative p-1 cursor-pointer">
+<div class="w-4 h-4 bg-tertiary rounded-full shadow-lg translate-x-4 transition-transform"></div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 bg-white/5 hover:bg-white/10 text-slate-300 text-sm font-bold rounded-xl transition-all">Reset All</button>
+</div>
+</aside>
+<!-- Results Grid -->
+<div class="flex-1">
+<div class="flex items-center justify-between mb-8 px-2">
+<p class="text-sm text-slate-400">Showing <span class="text-white font-bold">2,482</span> results for <span class="text-red-500 font-bold">"Trending Thrillers"</span></p>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sort By:</span>
+<select class="bg-transparent border-none text-white text-sm font-bold focus:ring-0 cursor-pointer">
+<option>Newest First</option>
+<option>Highest Rated</option>
+<option>Popularity</option>
+</select>
+</div>
+</div>
+<!-- Movie Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Movie Card 1 -->
+<div class="group relative rounded-2xl overflow-hidden aspect-[2/3] bg-surface-container shadow-2xl transition-all hover:scale-[1.02] active:scale-95 duration-300">
+<img alt="Cyberpunk film poster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A gritty, cinematic movie poster for a sci-fi thriller featuring a mysterious protagonist standing in a rain-slicked alleyway of a neon-lit cyberpunk city. The color palette is dominated by deep blacks, electric blues, and vibrant red neon signs that cast long shadows. The style is hyper-detailed with realistic textures and a dramatic, high-contrast lighting scheme that emphasizes the brand's atmospheric and premium cinema aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBubQKsJmQSzjFBQlcc31pvwu8z_Y9G13X1MgkqaTRdh8X5sNn5c5fzDoKTgnKGGeAT0UbIYQFWmLTsYjoX4p_ilVHzdkQmD18hM0_rHa8mDZzXYNK3k3lN7xYtZN54uefGMNxFkOnqtCjWs_kC7Gc8rvH8nbvlGyUDLvab-znE3MhqABcJaGhRD9Kf9tGOMP2hR4VibgNfiNlpCsBqN-40IxSDhJDV80d_BsNxySAaClt3euk_kWXxWz_eQOuMm3sa1Zd3H-ciBM8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute top-4 right-4 z-10">
+<div class="glass-panel px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-rating-num text-white">8.4</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 space-y-3">
+<div class="flex gap-2">
+<span class="text-[10px] font-bold text-white/70 bg-red-600/80 px-2 py-0.5 rounded uppercase">4K</span>
+<span class="text-[10px] font-bold text-white/70 bg-white/10 backdrop-blur-md px-2 py-0.5 rounded uppercase">HDR</span>
+</div>
+<h4 class="font-h2-title text-xl text-white">Neural Drift</h4>
+<p class="text-xs text-slate-400 line-clamp-2">In a future where memories are traded like currency, one detective uncovers a conspiracy that threatens his own existence.</p>
+<div class="flex items-center gap-3 pt-2">
+<button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span> Review
+                  </button>
+<button class="w-12 h-10 glass-panel hover:bg-white/10 rounded-xl flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Movie Card 2 -->
+<div class="group relative rounded-2xl overflow-hidden aspect-[2/3] bg-surface-container shadow-2xl transition-all hover:scale-[1.02] active:scale-95 duration-300">
+<img alt="Space odyssey film poster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A breathtaking cinematic poster for a space odyssey film, showing a vast, colorful nebula with swirling purples, magentas, and deep reds. A small, detailed spaceship is silhouetted against the colossal cosmic light. The lighting is ethereal and grand, evoking a sense of wonder and epic scale. The image maintains a clean, professional aesthetic with high-definition clarity and dramatic cinematic composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeu8JzZED_fLyabqZiRtZZiAC71tBZX5Vsf9K0WVZJr7-Iz4vJtY9Gcf1VGHrhoN-CjOHp9AuxEQDXg06G19EcadXPskYmg7nmKMS4693M1P0c3ten_5DhZBJLk9P0hCO-tn1-Yuqam4H-qn0t8kizXTbUu3ZiqxxTD9lo4dl9orr1FeI1dBVJ-j6KsvCAwKGcnJKHSIEldHzOe_42V-2VmFFqdrktESB3pxmUPQxHMbW1unXHXZR3Bq9kt9nUGl70LJ453uiLo-k"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute top-4 right-4 z-10">
+<div class="glass-panel px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-rating-num text-white">9.1</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 space-y-3">
+<div class="flex gap-2">
+<span class="text-[10px] font-bold text-white/70 bg-red-600/80 px-2 py-0.5 rounded uppercase">IMAX</span>
+<span class="text-[10px] font-bold text-white/70 bg-white/10 backdrop-blur-md px-2 py-0.5 rounded uppercase">Atmos</span>
+</div>
+<h4 class="font-h2-title text-xl text-white">Event Horizon: Zero</h4>
+<p class="text-xs text-slate-400 line-clamp-2">An exploration crew discovers a derelict station at the edge of a black hole, only to find that time works differently in the dark.</p>
+<div class="flex items-center gap-3 pt-2">
+<button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span> Review
+                  </button>
+<button class="w-12 h-10 glass-panel hover:bg-white/10 rounded-xl flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Movie Card 3 -->
+<div class="group relative rounded-2xl overflow-hidden aspect-[2/3] bg-surface-container shadow-2xl transition-all hover:scale-[1.02] active:scale-95 duration-300">
+<img alt="Mystery film poster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A dark and mysterious film poster featuring a foggy forest at dusk. The moon casts a cold silver glow through gnarled branches, while a single, warm red light glows from the window of a distant cabin. The atmosphere is tense and haunting, with deep shadows and rich textures. The overall visual style is elegant yet unsettling, adhering to a premium cinematic horror-noir aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZCDkDIs0kq7jnYz510MXvwJ8DBXHv6ZMSRdrHCHuTHvLXvkX2P3IUil1CcWWDWhuZ-PpvHpYTr5IqkZpEz7F-p8xJv4BX1p2s7cvqJsU4H6RdaWH2FOKvuAfeg2b7Iux8fYJJqMWTcnU5Fg2wgO6N1Br5K01VKvgxZmfiTK-7SneT7EuKz_qOi_5SXKA3je9HjlTk0h_etrMHHwnp_SKnatuIqQfvX6y31w3TBkA8s_cDdGshtY_o6pTWe9YA8CjNOpS_Aea15vg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute top-4 right-4 z-10">
+<div class="glass-panel px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-rating-num text-white">7.8</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 space-y-3">
+<div class="flex gap-2">
+<span class="text-[10px] font-bold text-white/70 bg-red-600/80 px-2 py-0.5 rounded uppercase">NEW</span>
+</div>
+<h4 class="font-h2-title text-xl text-white">Silence of the Pines</h4>
+<p class="text-xs text-slate-400 line-clamp-2">A small-town mystery unfolds when a local hiker disappears, leaving behind only a cryptic series of symbols etched into the trees.</p>
+<div class="flex items-center gap-3 pt-2">
+<button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span> Review
+                  </button>
+<button class="w-12 h-10 glass-panel hover:bg-white/10 rounded-xl flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Movie Card 4 -->
+<div class="group relative rounded-2xl overflow-hidden aspect-[2/3] bg-surface-container shadow-2xl transition-all hover:scale-[1.02] active:scale-95 duration-300">
+<img alt="Vintage film poster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A stylized movie poster in the style of classic 1970s neo-noir. It features high-contrast silhouettes, a palette of deep reds and sepia tones, and a gritty film grain overlay. The subject is a vintage car speeding down a dark desert highway. The lighting is stark and dramatic, with long headlights cutting through the darkness, capturing the essence of an authoritative and archival cinematic database." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSoo5PHqPsrdfYBOvEn2Ph3j6Q14yPSuuetgQT7oP80tI_Dvj5_MFhSk8PjyqTOmsW1cosbE80AQ-iq7FPCBNvNytBErLRU5XyI-1XkAjMoxkiA580pqOott0vh5dSjux3Wew18hxvadTBdr5v-Grb5FQrW9T6a77XiB6gZAMZ2sWHOrZaJfxRnfHL-xM-yNkQLaOT0irAqRwGZe6ikdoWmRI7sRzwiy7fH0fpCcVShj_1uBlng3vKhHWoCcZubj4D_jJa94mXedE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute top-4 right-4 z-10">
+<div class="glass-panel px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-rating-num text-white">8.9</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 space-y-3">
+<div class="flex gap-2">
+<span class="text-[10px] font-bold text-white/70 bg-red-600/80 px-2 py-0.5 rounded uppercase">CLASSIC</span>
+</div>
+<h4 class="font-h2-title text-xl text-white">The Asphalt Ghost</h4>
+<p class="text-xs text-slate-400 line-clamp-2">A master thief is forced out of retirement for one last job that requires him to confront the ghost of his past partner.</p>
+<div class="flex items-center gap-3 pt-2">
+<button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span> Review
+                  </button>
+<button class="w-12 h-10 glass-panel hover:bg-white/10 rounded-xl flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Movie Card 5 -->
+<div class="group relative rounded-2xl overflow-hidden aspect-[2/3] bg-surface-container shadow-2xl transition-all hover:scale-[1.02] active:scale-95 duration-300">
+<img alt="Action film poster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-energy action film poster showing an explosion in the background with bright orange and red flames casting a warm glow over a rugged protagonist in the foreground. The lighting is intense and directional, creating sharp highlights and deep shadows. Debris and sparks are captured in sharp detail mid-air, adding to the dynamic and high-stakes energy of the cinematic scene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxVfP7Sd7UmSp__OfDO8GctaGGfh-iKnaDL6vuUFB5gf3UNUNKfqPIFQ7nyYrdhZG8X1AKtyFYIiHiTdG1dkmr55rwLzxxifKyvLt7cF3R7FTqsyz9P-AoembQv3Ifp3VLXh6v_DlXBHbkZOKa-ho3GkK7_7BNZr0oUjBGDh-_n7WX-Hnn8FmHBc6Er6tHXybuEdtL_T1BnXiMaWshkyU6Sju2AlxOfYf6NInzM-V-FrxTK2Wh1bc6bfRkQyGv6zalXWgmhCap8rw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute top-4 right-4 z-10">
+<div class="glass-panel px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-rating-num text-white">7.2</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 space-y-3">
+<div class="flex gap-2">
+<span class="text-[10px] font-bold text-white/70 bg-red-600/80 px-2 py-0.5 rounded uppercase">ACTION</span>
+</div>
+<h4 class="font-h2-title text-xl text-white">Iron Protocol</h4>
+<p class="text-xs text-slate-400 line-clamp-2">When a rogue AI takes control of the world's defense systems, a disgraced pilot is the only one who can stop the countdown.</p>
+<div class="flex items-center gap-3 pt-2">
+<button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span> Review
+                  </button>
+<button class="w-12 h-10 glass-panel hover:bg-white/10 rounded-xl flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Movie Card 6 -->
+<div class="group relative rounded-2xl overflow-hidden aspect-[2/3] bg-surface-container shadow-2xl transition-all hover:scale-[1.02] active:scale-95 duration-300">
+<img alt="Drama film poster" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A poignant drama film poster showing two characters in an intimate, emotional conversation on a rainy city balcony. The lighting is soft and ambient, provided by the warm glow of interior lamps and the cool, blue-tinted moonlight of a cloudy night. Raindrops on the window pane create a layered, textured effect. The color palette is sophisticated, mixing deep navy blues with warm golden accents, reflecting a high-end cinematic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGwy7Mg86ULgUB-zaXawcAb3k54LJ7c2vu2zZXDdgG23SdxRh-PBQRBcKbv-dd-VaPnT0KHmVMjRVYjJ1p4Xt6viGFZKhdIXTNFI9vsFrRcJeGaLfZ5xhkgeJzRAr9x2L6IG4clFA3jwjlurWP1LgrRZWrQ71aBWeExE0YRZAIZekURvSzJxvoTQfy2MFN_PS1aUuFtIiOyPGkeV6wsLIsNwlnlS7DQeaAZOgYvCHoxTyTiZhQ42D03tVXOtRuMOh148GZorl2U8s"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+<div class="absolute top-4 right-4 z-10">
+<div class="glass-panel px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-rating-num text-white">8.6</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full p-6 space-y-3">
+<div class="flex gap-2">
+<span class="text-[10px] font-bold text-white/70 bg-white/10 backdrop-blur-md px-2 py-0.5 rounded uppercase">DRAMA</span>
+</div>
+<h4 class="font-h2-title text-xl text-white">The Last Echo</h4>
+<p class="text-xs text-slate-400 line-clamp-2">A renowned musician losing her hearing must find a new way to communicate with her daughter before they drift apart forever.</p>
+<div class="flex items-center gap-3 pt-2">
+<button class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2.5 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span> Review
+                  </button>
+<button class="w-12 h-10 glass-panel hover:bg-white/10 rounded-xl flex items-center justify-center transition-all">
+<span class="material-symbols-outlined text-white">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="mt-12 flex items-center justify-center gap-2">
+<button class="w-10 h-10 glass-panel rounded-xl flex items-center justify-center text-slate-500 hover:text-white transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 bg-red-600 text-white rounded-xl font-bold flex items-center justify-center shadow-lg shadow-red-600/20">1</button>
+<button class="w-10 h-10 glass-panel rounded-xl flex items-center justify-center text-slate-300 font-bold hover:bg-white/5 transition-all">2</button>
+<button class="w-10 h-10 glass-panel rounded-xl flex items-center justify-center text-slate-300 font-bold hover:bg-white/5 transition-all">3</button>
+<span class="text-slate-500 px-2">...</span>
+<button class="w-10 h-10 glass-panel rounded-xl flex items-center justify-center text-slate-300 font-bold hover:bg-white/5 transition-all">42</button>
+<button class="w-10 h-10 glass-panel rounded-xl flex items-center justify-center text-slate-500 hover:text-white transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Insight Panel -->
+<section class="mt-xl">
+<div class="relative p-1 bg-gradient-to-br from-red-600 via-tertiary-container to-red-900 rounded-[2.5rem] overflow-hidden">
+<div class="bg-surface-dim/95 backdrop-blur-3xl rounded-[2.4rem] p-8 md:p-12">
+<div class="flex flex-col lg:flex-row items-center gap-12">
+<div class="lg:w-1/3 relative">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gradient-to-br from-red-600/20 to-tertiary-container/20 absolute -top-10 -left-10 blur-3xl animate-pulse"></div>
+<span class="material-symbols-outlined text-[120px] md:text-[180px] text-tertiary-container opacity-40">psychology</span>
+</div>
+<div class="lg:w-2/3">
+<h3 class="font-h2-title text-white mb-4">Why you'll like <span class="text-tertiary">Neon Rain</span></h3>
+<p class="text-body-md text-slate-300 mb-8">Our AI synthesized 1,200 reviews and your viewing history to determine this is a <span class="text-secondary-fixed-dim font-bold">98% match</span>. You enjoy complex non-linear narratives and moody cinematographic palettes, which are the hallmarks of this director's latest masterpiece.</p>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-2 glass-panel px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined text-tertiary text-sm">auto_awesome</span>
+<span class="text-xs font-bold text-white">Complex Narrative</span>
+</div>
+<div class="flex items-center gap-2 glass-panel px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined text-tertiary text-sm">palette</span>
+<span class="text-xs font-bold text-white">Atmospheric Visuals</span>
+</div>
+<div class="flex items-center gap-2 glass-panel px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined text-tertiary text-sm">history</span>
+<span class="text-xs font-bold text-white">Similar to Blade Runner</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Implementation (Mobile Only) -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 md:hidden bg-black/80 backdrop-blur-lg rounded-t-2xl border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-red-600 bg-red-600/10 rounded-xl px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Browse</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Profile</span>
+</a>
+</footer>
+</body></html>

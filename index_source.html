@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "surface-dim": "#131313",
+                  "error-container": "#93000a",
+                  "inverse-surface": "#e5e2e1",
+                  "surface-variant": "#353534",
+                  "secondary-fixed-dim": "#e9c400",
+                  "primary-fixed": "#ffdad5",
+                  "outline": "#af8782",
+                  "error": "#ffb4ab",
+                  "background": "#131313",
+                  "primary-fixed-dim": "#ffb4aa",
+                  "on-error": "#690005",
+                  "on-tertiary": "#1000a9",
+                  "primary": "#ffb4aa",
+                  "on-surface-variant": "#e9bcb6",
+                  "outline-variant": "#5e3f3b",
+                  "secondary-container": "#ffdb3c",
+                  "surface-container-highest": "#353534",
+                  "surface-container-lowest": "#0e0e0e",
+                  "surface-bright": "#393939",
+                  "primary-container": "#e50914",
+                  "tertiary-container": "#5e61ec",
+                  "secondary-fixed": "#ffe16d",
+                  "on-tertiary-container": "#fcf8ff",
+                  "surface-container-low": "#1c1b1b",
+                  "tertiary": "#c0c1ff",
+                  "on-secondary-container": "#725f00",
+                  "on-secondary-fixed": "#221b00",
+                  "on-tertiary-fixed-variant": "#2f2ebe",
+                  "secondary": "#fff9ef",
+                  "inverse-primary": "#c0000c",
+                  "surface-container-high": "#2a2a2a",
+                  "surface": "#131313",
+                  "on-surface": "#e5e2e1",
+                  "on-error-container": "#ffdad6",
+                  "on-primary-fixed-variant": "#930007",
+                  "tertiary-fixed-dim": "#c0c1ff",
+                  "surface-container": "#201f1f",
+                  "on-primary": "#690003",
+                  "tertiary-fixed": "#e1e0ff",
+                  "on-primary-fixed": "#410001",
+                  "on-secondary": "#3a3000",
+                  "on-tertiary-fixed": "#07006c",
+                  "inverse-on-surface": "#313030",
+                  "on-primary-container": "#fff7f6",
+                  "surface-tint": "#ffb4aa",
+                  "on-background": "#e5e2e1",
+                  "on-secondary-fixed-variant": "#544600"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "margin-mobile": "16px",
+                  "sm": "12px",
+                  "margin-desktop": "64px",
+                  "md": "24px",
+                  "xl": "80px",
+                  "gutter": "24px",
+                  "lg": "48px",
+                  "base": "8px",
+                  "xs": "4px"
+          },
+          "fontFamily": {
+                  "body-md": ["Inter"],
+                  "h1-hero": ["Spline Sans"],
+                  "label-caps": ["Space Grotesk"],
+                  "h2-title": ["Spline Sans"],
+                  "rating-num": ["Space Grotesk"]
+          },
+          "fontSize": {
+                  "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "h1-hero": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                  "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                  "h2-title": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                  "rating-num": ["20px", {"lineHeight": "1", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .ai-glow {
+      box-shadow: 0 0 20px rgba(94, 97, 236, 0.3);
+      border: 1px solid rgba(94, 97, 236, 0.4);
+    }
+    .hero-gradient {
+      background: linear-gradient(0deg, #131313 0%, rgba(19, 19, 19, 0.6) 50%, rgba(19, 19, 19, 0) 100%);
+    }
+    .poster-gradient {
+      background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%);
+    }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-surface-dim text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-black/40 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-12">
+<h1 class="text-2xl font-black italic tracking-tighter text-red-600 dark:text-red-600 font-['Spline_Sans']">CineReview</h1>
+<nav class="hidden md:flex gap-8">
+<a class="font-['Spline_Sans'] tracking-tight text-red-500 font-bold border-b-2 border-red-600 pb-1" href="#">Home</a>
+<a class="font-['Spline_Sans'] tracking-tight text-slate-400 hover:text-white transition-colors" href="#">Browse</a>
+<a class="font-['Spline_Sans'] tracking-tight text-slate-400 hover:text-white transition-colors" href="#">Watchlist</a>
+<a class="font-['Spline_Sans'] tracking-tight text-slate-400 hover:text-white transition-colors" href="#">Reviews</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-white/5 border border-white/10 rounded-full px-4 py-1.5 focus-within:border-red-600 transition-all">
+<span class="material-symbols-outlined text-slate-400 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body-md" placeholder="Search films..." type="text"/>
+</div>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+<img alt="User profile avatar" data-alt="A high-quality professional portrait of a young man with short hair and a clean-shaven face. The lighting is soft and cinematic, with a warm key light hitting one side of his face. He is wearing a dark, minimal turtleneck. The background is softly blurred with deep charcoal tones and subtle red accent light, matching a premium cinema UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqOt5vaCr7cxhSBNs5qGIeAVGeEwr6kSLGtX-nIdP6r9LwxtoOy1Lludq8-KVzqFUCXqXs4pTktjfIjEI1R1t0tCrXPVMk0lSWB2j2id06oQsSlGgZqVI5wkAvsbhdynD43_4PxRHzyvJ8KxhdQp-yYZEwA8NB50RKDwiP-bkPAZL4OndKbPnnrgqRlRVt3tU8szo1oB3rYMnCyM-ploCfbHsLLscxmJZX0jZoaSYERiVFAZ3ock0f8h5uqTjyxxk5FjefplY7rJo"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="relative">
+<!-- Hero Section -->
+<section class="relative h-screen w-full flex flex-col justify-end pb-xl px-margin-mobile md:px-margin-desktop overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A grand, widescreen cinematic shot of a futuristic desert landscape under two orange suns, inspired by sci-fi cinema. Vast, swirling sand dunes stretch to the horizon while a massive monolithic structure floats silently in the sky. The lighting is dramatic and warm, with deep shadows and vibrant amber highlights. The atmosphere is hazy and epic, perfectly fitting a high-budget theatrical blockbuster presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBid6dcSQwP31GrSnZ4TbzKNF0plnrH3wfJrY-sM-r0Mz2hE6FiqKpnF1rKMa_4iYeQKFeVIB3s_cXpeIJqULfwZXRQ96tXswWm5XhYOSdNbW1FJhMQYNOaAeuECXjEyA3-su1G91MeBGYmGRA06PRoE9aG_dOVMjuURJpxzOgrUUrGM8z9dmrLF6ui4uiEwDtBahT4ERrIUk53YoSqLmto3pCSizH1kHMJMMeR8bXR0yu9nclBRL67TVOBkjiNeShUjS308zxGAMQ"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 max-w-4xl space-y-md">
+<div class="flex items-center gap-4">
+<span class="font-label-caps text-label-caps bg-red-600 px-3 py-1 rounded-sm">TRENDING #1</span>
+<div class="flex items-center gap-1 text-secondary-fixed">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-rating-num">9.2</span>
+</div>
+</div>
+<h2 class="font-h1-hero text-h1-hero uppercase">Dune: Part Two</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Paul Atreides unites with Chani and the Fremen while on a warpath of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe.
+        </p>
+<div class="flex flex-wrap gap-gutter pt-4">
+<button class="bg-primary-container text-on-primary-container px-lg py-sm rounded-lg font-h2-title text-[18px] flex items-center gap-2 hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined">play_arrow</span>
+            Watch Trailer
+          </button>
+<button class="glass-card px-lg py-sm rounded-lg font-h2-title text-[18px] flex items-center gap-2 hover:bg-white/10 active:scale-95 transition-all">
+<span class="material-symbols-outlined">reviews</span>
+            Read Reviews
+          </button>
+</div>
+</div>
+</section>
+<!-- Trending Carousel -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop space-y-md">
+<div class="flex justify-between items-end">
+<div class="space-y-xs">
+<span class="font-label-caps text-label-caps text-red-500">HOT THIS WEEK</span>
+<h3 class="font-h2-title text-h2-title uppercase tracking-tight">Trending Movies</h3>
+</div>
+<button class="text-slate-400 hover:text-white flex items-center gap-2 text-sm font-bold uppercase tracking-widest">
+          View All <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+<div class="flex gap-gutter overflow-x-auto scrollbar-hide pb-base">
+<!-- Movie Card 1 -->
+<div class="flex-none w-64 group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-4 border border-white/5 group-hover:border-red-600/50 transition-all duration-500">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A cinematic movie poster of a dark gritty urban detective thriller. The scene shows a rainy city street at night with neon lights reflecting in puddles. A mysterious figure in a trench coat stands under a streetlamp. The lighting is high-contrast noir style with deep blues and vivid red highlights, creating an intense, atmospheric suspense mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC90O0CYe6efe68rW_MJd_30lT92mjgpr_Upg11letgbwh3-vCI_Jg2828SSdl1jGO0yRbnVLTCBRUBG7lh_jyQey8_JheDPJAXI10Y82mpf1H3UXE5JyntXGcUBjsBRmrRgiNP98jVpGLV68foHMX3MFQcKLrzeFruBP__stMFC5IHoO_2Z8TR2HgkhpEw9ZeJ7Q2ducLTI6kAhXqs3h6k9exu_TJSk_bEEI1VSb4tfZS0EZQEk21QvyFFJBhm90j1y1vP7v9A418"/>
+<div class="absolute inset-0 poster-gradient flex flex-col justify-end p-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full py-2 bg-red-600 text-white rounded font-bold text-sm">Review Now</button>
+</div>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-lg flex items-center gap-1 border border-white/10">
+<span class="material-symbols-outlined text-secondary-fixed text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-sm text-secondary-fixed">8.7</span>
+</div>
+</div>
+<h4 class="font-h2-title text-body-md truncate">The Midnight Echo</h4>
+<p class="text-slate-500 text-sm">Noir, Mystery</p>
+</div>
+<!-- Movie Card 2 -->
+<div class="flex-none w-64 group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-4 border border-white/5 group-hover:border-red-600/50 transition-all duration-500">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A cinematic movie poster for an epic fantasy adventure. A lone traveler stands on a jagged cliff overlooking a vast mountain range with a swirling magical nebula in the sky. The color palette features mystical purples and glowing indigo tones. The mood is wondrous and heroic, with sharp digital painting details and atmospheric depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgDC5eVgTzTLAXzTCWLTMVqNCjGchZ1Wy0pnEo2feedCNBkSY17YMsRrMjO9k7sSOEz5_1d79tZ5EAx5batvyYv9xJH8hjJllT4G7zUf5A143Ef90FPl-BrMpuoGlO-uIR5KxwCAWsdKXZt7oaVGV42RDCMTWsnhxcQzvt2sURt0o9IJ1vegJpcRbG02QTX2MetxfG4ugrsH6mlDYP1q1Dn-mmLjAyKzVYy_fD1TKWNIYIAArqkyDySsoWX4EiTGxUc3eqTxSMag0"/>
+<div class="absolute inset-0 poster-gradient flex flex-col justify-end p-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full py-2 bg-red-600 text-white rounded font-bold text-sm">Review Now</button>
+</div>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-lg flex items-center gap-1 border border-white/10">
+<span class="material-symbols-outlined text-secondary-fixed text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-sm text-secondary-fixed">9.0</span>
+</div>
+</div>
+<h4 class="font-h2-title text-body-md truncate">Beyond The Horizon</h4>
+<p class="text-slate-500 text-sm">Sci-Fi, Adventure</p>
+</div>
+<!-- Movie Card 3 -->
+<div class="flex-none w-64 group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-4 border border-white/5 group-hover:border-red-600/50 transition-all duration-500">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A cinematic still of a futuristic cyberpunk apartment interior at night. Raindrops are visible on a large glass window that overlooks a neon-lit city with flying vehicles. Inside, a soft blue glow comes from holographic screens. The aesthetic is tech-focused and melancholic, with a rich palette of deep violets and cool magentas." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4Vobg9GGUGYdVkBoKHoS-Y1Ri3aNN2qGfVRmOytVkPpYja_bYG41D4e7asxiPM8gzxs3wL26shVPKwpszJ7TWkVE3kUazRrJgphdChgWohc2R5CWT66u0pFO0727uK-IdpxJpeEh7n5FByliPc0ltHqqm2tTuvVbrPqjms6WTyz3sWIab5N28QWh-FoeVTHEs3Bk_RiaaRSZqOzXZnPZ_FDGuNQBw1dcLb_V2zREZrIj1-V9fwFtBp9whH2QoLkhiylrqpaT6iuk"/>
+<div class="absolute inset-0 poster-gradient flex flex-col justify-end p-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full py-2 bg-red-600 text-white rounded font-bold text-sm">Review Now</button>
+</div>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-lg flex items-center gap-1 border border-white/10">
+<span class="material-symbols-outlined text-secondary-fixed text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-sm text-secondary-fixed">8.4</span>
+</div>
+</div>
+<h4 class="font-h2-title text-body-md truncate">Neon City Pulse</h4>
+<p class="text-slate-500 text-sm">Action, Cyberpunk</p>
+</div>
+<!-- Movie Card 4 -->
+<div class="flex-none w-64 group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-4 border border-white/5 group-hover:border-red-600/50 transition-all duration-500">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A haunting cinematic poster for a psychological thriller. A cracked mirror reflects a distorted face with a single teardrop. The room is dimly lit with a sickly yellow and dark olive green palette. The lighting is sparse and unsettling, creating a mood of tension and psychological unease. High detail and sharp texture focusing on the shattered glass." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJsxb5eMjcBqp6YHudUoDuozarwiyTPToSxsHWjOnbOwnYHncJqNgwhiM95WAji_wxWA5IWK_R63H59UWueIpHyft7OffqIsejbdk6NOoMth-hAH3GAcLAeYnPvXoUrRHLNdRqbI9a64xqPFo4pKcohAUaafoGRsnHNId4DHruWpqANxEGam1Hf7guEXSC0DXTwLfNIimdR_N7FMsmfKTjQr7eDSy_w-dJlKdYbjXfOC2Ras8u2ivLwLTKjBsrfoM8_lZfXkS8wuc"/>
+<div class="absolute inset-0 poster-gradient flex flex-col justify-end p-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full py-2 bg-red-600 text-white rounded font-bold text-sm">Review Now</button>
+</div>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-lg flex items-center gap-1 border border-white/10">
+<span class="material-symbols-outlined text-secondary-fixed text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-sm text-secondary-fixed">9.5</span>
+</div>
+</div>
+<h4 class="font-h2-title text-body-md truncate">Fractured Mirror</h4>
+<p class="text-slate-500 text-sm">Thriller, Drama</p>
+</div>
+<!-- Movie Card 5 -->
+<div class="flex-none w-64 group cursor-pointer">
+<div class="relative aspect-[2/3] rounded-xl overflow-hidden mb-4 border border-white/5 group-hover:border-red-600/50 transition-all duration-500">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A grand cinematic landscape of a historical battle during the Napoleonic era. Smoke from cannons fills a wide valley as thousands of soldiers in red and blue uniforms charge across a grassy plain. The lighting is dramatic, with sun rays breaking through heavy storm clouds. The scene is epic and visceral, conveying the scale of classical historical cinema." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8Wb__T3ex9AJqDGNdEIgV9RjN5IZK-GPUfK64F0jMbUHG2SyUOb7huCYgWlRQto7JiafinrIsxkCfKxR6H4YQNTmSKVsANhQqbTbHxVV-DFbg6EWKIpYzITsstDq1k80yIJgf-grDPgUFZPYoECKvL-ZcKDfJuGS2wKIfl7ATBWhtsSN41D539VXj6Dgy-b0kiFSnGlT9YRXfPbAaVgWEYjzfpJolH9yXk5wPvFtMxMc8JZz2C4mRii5ad8WER7Qyk6JvoG6s60g"/>
+<div class="absolute inset-0 poster-gradient flex flex-col justify-end p-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="w-full py-2 bg-red-600 text-white rounded font-bold text-sm">Review Now</button>
+</div>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-lg flex items-center gap-1 border border-white/10">
+<span class="material-symbols-outlined text-secondary-fixed text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num text-sm text-secondary-fixed">8.9</span>
+</div>
+</div>
+<h4 class="font-h2-title text-body-md truncate">Imperial Conquest</h4>
+<p class="text-slate-500 text-sm">History, War</p>
+</div>
+</div>
+</section>
+<!-- AI Picks Bento Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-low/50">
+<div class="flex items-center gap-4 mb-lg">
+<span class="material-symbols-outlined text-tertiary text-4xl">psychology</span>
+<div>
+<h3 class="font-h2-title text-h2-title tracking-tight flex items-center gap-3">
+            AI Recommended Picks
+            <span class="text-[10px] bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded-full font-label-caps tracking-widest">PERSONALIZED</span>
+</h3>
+<p class="text-slate-400 font-body-md">Sifting through cinema history based on your taste.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Main AI Card -->
+<div class="md:col-span-2 relative glass-card ai-glow rounded-2xl p-lg flex flex-col md:flex-row gap-lg group">
+<div class="w-full md:w-1/3 aspect-[2/3] rounded-lg overflow-hidden flex-none">
+<img class="w-full h-full object-cover" data-alt="A stylized movie poster for a philosophical sci-fi film. A giant, celestial clockwork mechanism hangs in space, with planets as gears. The colors are deep navy, royal gold, and brilliant white. The aesthetic is intricate, ethereal, and high-tech, representing the intersection of time, space, and human destiny." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz--d5eBGCMgEgdWpyxZ7pQp8k56z5COSKV17odls2k_e87c7_fo9tZL7oiuy3kaBo35-WjxmBCd2o0BS46bEIbp7DL_0fQvSj54zxovBTQmqmz2xR1kgfVcc4s1jEidoPTxgLKfv1nRQyPdTv1C8B8zFGGiHynuoRcsGMlbHu9N3N5VsFj3oCc5I7XoPXmXE4Es7Gmd-I_f0IjUumNsKsl7Nbqzk_pcsydLYeKejMebMLS622C9C71iypowHmQzvEipU7x7vkEIU"/>
+</div>
+<div class="flex-grow flex flex-col justify-between">
+<div class="space-y-md">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-h2-title text-2xl mb-1">Chronicles of Void</h4>
+<div class="flex gap-2">
+<span class="text-[10px] border border-white/20 px-2 py-0.5 rounded-full font-label-caps">98% MATCH</span>
+<span class="text-[10px] border border-white/20 px-2 py-0.5 rounded-full font-label-caps">CULT CLASSIC</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-secondary-fixed">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-rating-num">9.8</span>
+</div>
+</div>
+<div class="bg-tertiary/10 border-l-2 border-tertiary p-4 rounded-r-lg">
+<p class="text-tertiary text-sm italic font-medium">"Why you'll like this: Based on your love for Interstellar and Dune, this film explores complex temporal physics with a similar emotional core and grand visual scale."</p>
+</div>
+<p class="text-slate-300 text-sm line-clamp-3">In a world where time is a tradable commodity, a young scholar discovers a hidden dimension where the past can be rewritten, but at the cost of his own existence.</p>
+</div>
+<div class="pt-base flex gap-gutter">
+<button class="bg-tertiary-container text-on-tertiary-container px-6 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-sm">movie_filter</span> Watch Now
+              </button>
+<button class="glass-card px-6 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-white/10 transition-all">
+<span class="material-symbols-outlined text-sm">bookmark</span> Watchlist
+              </button>
+</div>
+</div>
+</div>
+<!-- Small AI Side Cards -->
+<div class="flex flex-col gap-gutter">
+<div class="glass-card rounded-2xl p-4 flex gap-4 hover:bg-white/10 transition-all cursor-pointer">
+<div class="w-20 h-28 rounded-lg overflow-hidden flex-none">
+<img class="w-full h-full object-cover" data-alt="A gritty close-up of a gladiator's helmet and weathered face, covered in dust and sweat. The lighting is harsh and direct, emphasizing the texture of the metal and the intensity in the character's eyes. The color palette is warm sepia and earthy brown, typical of a visceral historical epic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBppBTEdV3BErlRh1S42qtZWk00DpSgxJRjY1USdLZqjaUXOD4-T12hJFgV0Fcd1icMnvmrRxGxUDmcxCz0nuP2-N0L4O0geDyhim5Sfcy2zmyXEXAGQ4sgY9AgweNZC-AWJGW1yeqssdrHSZzKDX6ktUS0qOL1YWAz9jHjLdcoGYPfqjUtdDzqY-sVVtK2_cK7Mj7lQDD10RYUjCldbRtvKHEV_D34hXjXHJ1JQtSdlb4MhMg12NNxwr6ckscyrAKQVkf_JdQPZXA"/>
+</div>
+<div class="flex flex-col justify-center">
+<h5 class="font-bold text-white mb-1">Shadow Sovereigns</h5>
+<p class="text-xs text-slate-500 mb-2">Period Drama, Action</p>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 text-secondary-fixed text-[10px]">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>8.2</span>
+</div>
+<span class="text-[10px] text-tertiary">91% Match</span>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-2xl p-4 flex gap-4 hover:bg-white/10 transition-all cursor-pointer">
+<div class="w-20 h-28 rounded-lg overflow-hidden flex-none">
+<img class="w-full h-full object-cover" data-alt="An abstract cinematic still showing the interior of a brain represented as a vast library of glowing orbs. The color palette is vibrant neon blue and electric purple. Each orb glows with a different light, representing a memory. The aesthetic is futuristic and high-concept, symbolizing an AI or internal consciousness journey." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS7I1H9QxyHjqisRh6BJ08RwpNdsg7ZGjuNVS_BK_6KVRnXd90XzsnkO_gGeG7nvMZwrRzyadZumefuk0RWO6z1J3YhbUiRvd0q92xVnf8eFs3XfVZCGkHS6zMfVlYilCybjeW7uteXNA5MWud-aFXmQPU5ZW5VzonRLo-jimcRw4iTHhXZWZ-wFS39A5AB7cDFO1v6UI2xMMpAX_tWijOrEBlis12gcu4VTNhc-w7G3bZWAk9ESkOI9z4NrHFGKYX8H4mBztiZN8"/>
+</div>
+<div class="flex flex-col justify-center">
+<h5 class="font-bold text-white mb-1">Mnemonic Recall</h5>
+<p class="text-xs text-slate-500 mb-2">Sci-Fi, Psychology</p>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 text-secondary-fixed text-[10px]">
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>7.9</span>
+</div>
+<span class="text-[10px] text-tertiary">85% Match</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Rated Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop">
+<div class="flex justify-between items-end mb-lg">
+<div class="space-y-xs">
+<span class="font-label-caps text-label-caps text-secondary-fixed">CRITICS CHOICE</span>
+<h3 class="font-h2-title text-h2-title uppercase tracking-tight">Top Rated All-Time</h3>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-gutter">
+<!-- Compact Rating Cards -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] rounded-lg overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A cinematic horror movie poster set in a fog-drenched ancient cemetery at midnight. A single glowing cross is visible through the thick mist. The lighting is eerie and cold, with pale moonlit blues and deep shadowy blacks. The atmosphere is quiet, heavy, and terrifyingly atmospheric." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa8MWGeapRY91TFhNUCeWsTnuSNzG92G0EINHAcK0ZXmKBwmz8I2UQ4SOZkr9MF4RYMQeUUWeKIylgVMhAmNWbssEBroT6GGaobjD-P0WndofwEUflPpOL_iuPz31vRGsA8VfljDO93DaHRPnog7u1bZVhtxryo65YKseiRaiAxZT03Wfl61sdRhJhovHIYN32KssRRy3TPEQRmC8eSDX5mXPR0sSCs4mhVvoRT0ooIvPgmRjnXxckWXa40SydlayWAPOgrAJ88UA"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all"></div>
+<div class="absolute bottom-2 left-2 bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded font-rating-num text-xs">9.9</div>
+</div>
+<p class="text-sm font-bold truncate">Whisper in the Mist</p>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] rounded-lg overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A vintage cinematic still from a classic western. A silhouetted cowboy sits on his horse at the top of a red canyon ridge during a golden hour sunset. The sun is a large red orb on the horizon, bathing the entire desert landscape in a rich, warm crimson and orange glow. The scene is iconic and dramatic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsx6MKDVUdULaaQ-aiznt5JaKXZWrXDogux0ZHNxlSFCAEvMqipV-7l6ZzDpGwGDggDNQjVImXca8ooeoftX3g1N1kM3SeNqoTO5hyT8eHJ8d7jKC7HSdAeN9Eia2XfDitStq6D1E_T9sZqbXX-cJTQa5q9_IImopVrb8XfVJ9CKMrcN5QaDzsiPI4-5NgI9lM6amkzsURNwRUykCFf4qF6jkwodOjGGvvOVVn0tDrQhnOiO89G5LXGGjnOQ8z4Bl3_AwXR4e8xY0"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all"></div>
+<div class="absolute bottom-2 left-2 bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded font-rating-num text-xs">9.7</div>
+</div>
+<p class="text-sm font-bold truncate">Crimson Ridge</p>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] rounded-xl overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A high-key cinematic still of a futuristic white laboratory. Advanced medical robots are performing delicate surgery under bright, sterile white LED lights. The aesthetic is clean, minimalist, and clinical, with a color palette of pristine whites, cool greys, and surgical blue highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCDsAv5Pgxn8WDqnAcHDMXtvK7wtmKw7p2Lv5lMUPxa3-EFil9z5QnWHIe_LW_o4yDmaucT_t6HVmseTp_fK8-t2uGisYvojp5RK_oxx8sq_KRgMVfL2521uJ8hBs9ECTrdLJzLfuaimlE_6Dh2FxflOe4ikaBkzjuKVamUm-TrZBql9lirm3tkFBrJrak-T4x4tFGIDCj3ZhymFe1xf4Ge18iFMShOXuucQ36huaNiKMZ8TxO0Qnm8KI_3kNk_qlgIj_CvRPS12c"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all"></div>
+<div class="absolute bottom-2 left-2 bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded font-rating-num text-xs">9.6</div>
+</div>
+<p class="text-sm font-bold truncate">Genetic Protocol</p>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] rounded-lg overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A cinematic interior shot of an opulent 1920s jazz club. Musicians in tuxedos play brass instruments under warm, smoky spotlighting. The room is filled with a rich mahogany and gold color palette. The mood is lively yet sophisticated, capturing the glamorous spirit of the Roaring Twenties in a high-fidelity cinematic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFVBBNA0doArgBcq9u06a6GCf4PR_6ncSP3bS1qQyWpSyjd5u2yQ9q6iHMaFPjpMnrkqp1tn1Hqufr7z3oMx-qw7jSr3X-iq3aadrA9RzzY6qx0tUIaIZF-hfb8TwMuqZOzvjJ899RubaU3VgdQovqvv3y9rqMZrhBkwutScnXlVyEREPq61VbjKVVw0VCcr62n75CjKe_cnGq5sngYx0sjAZiFVixzEpBArOudYgQLQ7PpQMbhNqm1gYQ2sYl2ZMRNxePOg3P1p8"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all"></div>
+<div class="absolute bottom-2 left-2 bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded font-rating-num text-xs">9.5</div>
+</div>
+<p class="text-sm font-bold truncate">The Velvet Note</p>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] rounded-lg overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A cinematic mountain landscape for a nature documentary film. A high-altitude shot of the Himalayas with a group of climbers ascending a steep, snowy peak. The lighting is brilliant and crisp, with deep blue skies and sparkling white snow. The aesthetic is professional, sharp, and breathtakingly majestic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDelMzvAGT2CBLkE9bMgfSmyJuMq4CfrAO0-Ebna0wIvELUcEF5nYtXvFWUEwv_LZAfDX2FFKd1JNodiqmnC_KdVUeshPTcNHrBk0ax-6aWehDdcBdYBn_TkMxwYjdm40roAAOlRgAOt3aa0s86p267MOgXHPwI-lgUP54lrIR6p5rsmOCNEPCq1ZRI6qVN8prlNGs-ny8UnRveS4hraKUSq8I68YmDo7keqKqj76VMQ18XtJZACkDc_9HNj_zRNgGhPw3W3Qj6DSc"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all"></div>
+<div class="absolute bottom-2 left-2 bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded font-rating-num text-xs">9.4</div>
+</div>
+<p class="text-sm font-bold truncate">Peak Of Silence</p>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-[3/4] rounded-lg overflow-hidden mb-2">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A cinematic shot of a high-tech racing car speeding on a neon-lit track at night. Motion blur streaks from the tail lights create long red lines. The car's sleek carbon fiber body reflects the city's neon lights. The aesthetic is fast-paced, high-stakes, and vibrantly colored with electric blues and hot pinks." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuF5j3_rPdmulwqp3tgY9guhIKi8G5RMxSYmOK-8GjGv-KIH7Z5QI7s51oVXsrYsB3rw-itYjFpFSyZNw-A9PAuoctPYa-LcSfY94sNUDVIwxzWdz5kmCPjUP4xf9dne5XIXeAn9kcILVlMQh6x46-Th8xZhu3mOyQte4BDtRreeB2kxhxl-gY-juYcMBzQ_QtsvPY4Q2qCAgvCE-U8n013DY6BSHhZSuHy8F6QDzIfMPI3tIwczDUTpwLOqxHSExbAQe-xCX7Omk"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all"></div>
+<div class="absolute bottom-2 left-2 bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded font-rating-num text-xs">9.3</div>
+</div>
+<p class="text-sm font-bold truncate">Velocity Zero</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="py-xl px-margin-mobile md:px-margin-desktop border-t border-white/10 bg-surface-container-lowest">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg mb-xl">
+<div class="space-y-md">
+<h2 class="text-xl font-black italic tracking-tighter text-red-600 uppercase">CineReview</h2>
+<p class="text-slate-500 text-sm">Elevating the way you discover and critique the world of cinema. AI-powered insights, community-driven reviews.</p>
+<div class="flex gap-4">
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-md">Movies</h4>
+<ul class="space-y-sm text-sm text-slate-500">
+<li><a class="hover:text-red-500 transition-colors" href="#">Trending Now</a></li>
+<li><a class="hover:text-red-500 transition-colors" href="#">Coming Soon</a></li>
+<li><a class="hover:text-red-500 transition-colors" href="#">Popular Genres</a></li>
+<li><a class="hover:text-red-500 transition-colors" href="#">Award Winners</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-md">Community</h4>
+<ul class="space-y-sm text-sm text-slate-500">
+<li><a class="hover:text-red-500 transition-colors" href="#">Top Reviewers</a></li>
+<li><a class="hover:text-red-500 transition-colors" href="#">Discussion Forums</a></li>
+<li><a class="hover:text-red-500 transition-colors" href="#">Review Guidelines</a></li>
+<li><a class="hover:text-red-500 transition-colors" href="#">Leaderboard</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-md">Newsletter</h4>
+<p class="text-sm text-slate-500 mb-md">Get weekly AI picks and film news.</p>
+<div class="flex">
+<input class="bg-white/5 border border-white/10 rounded-l-lg px-4 py-2 text-sm focus:ring-0 focus:border-red-600 w-full" placeholder="Email address" type="email"/>
+<button class="bg-red-600 text-white px-4 py-2 rounded-r-lg text-sm font-bold">Join</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-lg border-t border-white/5 text-xs text-slate-600 gap-md">
+<p>© 2024 CineReview. All rights reserved.</p>
+<div class="flex gap-lg">
+<a class="hover:text-slate-400" href="#">Privacy Policy</a>
+<a class="hover:text-slate-400" href="#">Terms of Service</a>
+<a class="hover:text-slate-400" href="#">Cookie Policy</a>
+</div>
+</div>
+</footer>
+<!-- Bottom Navigation Shell (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-4 md:hidden bg-black/80 backdrop-blur-lg rounded-t-2xl border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-red-600 bg-red-600/10 rounded-xl px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Browse</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Watchlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 hover:text-red-400 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Spline_Sans'] text-[10px] uppercase font-bold">Profile</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --background: #131313;
+  --foreground: #e5e2e1;
+  
+  /* Brand Colors */
+  --primary: #ffb4aa;
+  --primary-container: #e50914;
+  --on-primary: #690003;
+  --secondary: #fff9ef;
+  --secondary-container: #ffdb3c;
+  --tertiary: #c0c1ff;
+  --tertiary-container: #5e61ec;
+  --surface-dim: #131313;
+  --surface-bright: #393939;
+  --surface-container: #201f1f;
+  --on-surface-variant: #e9bcb6;
+  --secondary-fixed: #ffe16d;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container: var(--surface-container);
+  --color-on-surface-variant: var(--on-surface-variant);
+  
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-secondary-fixed: var(--secondary-fixed);
+
+  --font-h1-hero: "Spline Sans", sans-serif;
+  --font-h2-title: "Spline Sans", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-label-caps: "Space Grotesk", sans-serif;
+  --font-rating-num: "Space Grotesk", sans-serif;
+
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+}
+
+/* Custom Utilities */
+@utility glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@utility ai-glow {
+  box-shadow: 0 0 20px rgba(94, 97, 236, 0.3);
+  border: 1px solid rgba(94, 97, 236, 0.4);
+}
+
+@utility hero-gradient {
+  background: linear-gradient(0deg, #131313 0%, rgba(19, 19, 19, 0.6) 50%, rgba(19, 19, 19, 0) 100%);
+}
+
+@utility poster-gradient {
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%);
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility ai-gradient-border {
+  position: relative;
+  background: rgba(19, 19, 19, 0.8);
+  border-radius: 1rem;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(45deg, #e50914, #5e61ec, #c0c1ff);
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body-md);
+  overflow-x: hidden;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
