@@ -3,6 +3,14 @@ import { useState } from 'react';
 
 const BACKEND_URL = 'http://localhost:5000/api';
 
+/**
+ * MovieCard Component
+ * Displays a cinematic preview of a movie with a 3D hover effect.
+ * Provides a quick "Add to Vault" (watchlist) action.
+ * 
+ * @param {Object} props - Component props.
+ * @param {Object} props.movie - The movie data to display.
+ */
 export default function MovieCard({ movie }) {
   const [isAdding, setIsAdding] = useState(false);
 
