@@ -65,12 +65,16 @@ export default function WatchlistPage() {
       <Navbar />
       
       <main className="flex-grow pt-32 px-margin-mobile md:px-margin-desktop pb-20">
-        <header className="mb-12">
-          <h1 className="font-h1-hero text-5xl text-white mb-4 font-bold tracking-tighter uppercase">My Watchlist</h1>
-          <p className="text-lg text-slate-400 opacity-80">
-            Films you've marked for future cinematic experiences.
-          </p>
-        </header>
+import SectionHeader from '@/components/SectionHeader';
+
+// ... (skipping constants)
+
+// Inside WatchlistPage:
+        <SectionHeader 
+          title="My Watchlist" 
+          subtitle="Vault" 
+          description="Films you've marked for future cinematic experiences."
+        />
 
         {!user ? (
           <div className="glass-card p-20 rounded-[3rem] text-center border border-white/5">
