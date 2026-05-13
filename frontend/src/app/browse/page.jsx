@@ -132,10 +132,6 @@ function BrowseContent() {
               <div className="absolute inset-0 bg-gradient-to-t from-surface-dim via-surface-dim/60 to-transparent"></div>
             </div>
             <div className="relative z-10 max-w-2xl">
-              <h1 className="font-h1-hero text-6xl text-white mb-4 font-bold tracking-tighter uppercase">Explore Cinema</h1>
-              <p className="text-lg text-slate-300 mb-8 max-w-lg opacity-90">
-                Discover your next obsession with AI-powered recommendations and deep-dive critical analysis from our global community.
-              </p>
               <form onSubmit={handleSearch} className="relative group max-w-xl">
                 <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-tertiary-container rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
                 <div className="relative flex items-center bg-surface-container/80 backdrop-blur-xl border border-white/10 rounded-2xl p-2 pr-4 shadow-xl">
