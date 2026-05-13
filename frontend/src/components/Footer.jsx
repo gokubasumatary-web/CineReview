@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="py-xl px-margin-mobile md:px-margin-desktop border-t border-white/10 bg-surface-container-lowest">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-lg mb-xl">
         <div className="space-y-md">
-          <h2 className="text-xl font-black italic tracking-tighter text-red-600 uppercase">CineReview</h2>
+          <h2 className="text-xl font-black italic tracking-tighter text-red-600 uppercase">CineVerse</h2>
           <p className="text-slate-500 text-sm">
             Elevating the way you discover and critique the world of cinema. AI-powered insights, community-driven reviews.
           </p>
@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex flex-col md:flex-row justify-between items-center pt-lg border-t border-white/5 text-xs text-slate-600 gap-md">
-        <p>© 2024 CineReview. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} CineVerse. All rights reserved.</p>
         <div className="flex gap-lg">
           <Link href="/privacy" className="hover:text-slate-400">Privacy Policy</Link>
           <Link href="/terms" className="hover:text-slate-400">Terms of Service</Link>
