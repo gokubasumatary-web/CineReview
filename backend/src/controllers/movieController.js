@@ -22,6 +22,11 @@ const getTrending = async (req, res) => {
   }
 };
 
+/**
+ * Fetches comprehensive movie details, including AI insights and community reviews.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const getDetails = async (req, res) => {
   try {
     const { id } = req.params;
@@ -51,6 +56,11 @@ const getDetails = async (req, res) => {
   }
 };
 
+/**
+ * Searches for movies by title using TMDB.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const search = async (req, res) => {
   try {
     const { q } = req.query;
