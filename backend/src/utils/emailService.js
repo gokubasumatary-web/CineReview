@@ -6,6 +6,14 @@
 const nodemailer = require('nodemailer');
 
 // Configure the SMTP transporter using Gmail settings
+/**
+ * To enable email delivery:
+ * 1. Go to your Google Account settings.
+ * 2. Enable 2-Step Verification.
+ * 3. Search for "App Passwords".
+ * 4. Create an app password for "Mail" on your "Windows Computer".
+ * 5. Add this password to your .env file as EMAIL_PASS.
+ */
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
