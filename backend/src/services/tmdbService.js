@@ -47,16 +47,22 @@ const getMovieDetails = async (movieId) => {
 
 /**
  * Searches for movies by title query.
+ * Handles pagination and empty results gracefully.
  * @param {string} query - The search string.
- * @returns {Promise<Array>} List of matching movie objects.
+ * @returns {Promise<Array>} List of matching movie objects or empty array on failure.
  */
 const searchMovies = async (query) => {
-  const response = await tmdb.get('/search/movie', {
-    params: {
-      query,
-    },
-  });
-  return response.data.results;
+  try {
+    const response = await tmdb.get('/search/movie', {
+      params: {
+        query,
+      },
+    });
+    return response.data.results || [];
+  } catch (error) {
+    console.error('TMDB Search Error:', error.message);
+    return [];
+  }
 };
 
 module.exports = {
