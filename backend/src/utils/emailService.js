@@ -1,5 +1,11 @@
+/**
+ * Email Service
+ * Handles all outgoing emails using Nodemailer and Gmail SMTP.
+ * Currently configured for Welcome Emails and Password Reset requests.
+ */
 const nodemailer = require('nodemailer');
 
+// Configure the SMTP transporter using Gmail settings
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -8,6 +14,11 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+/**
+ * Sends a welcome email to a newly registered user.
+ * @param {string} email - Recipient's email address.
+ * @param {string} name - Recipient's name.
+ */
 const sendWelcomeEmail = async (email, name) => {
   try {
     const mailOptions = {
@@ -35,6 +46,11 @@ const sendWelcomeEmail = async (email, name) => {
   }
 };
 
+/**
+ * Sends a password reset link to a user.
+ * @param {string} email - Recipient's email address.
+ * @param {string} resetToken - The unique reset token.
+ */
 const sendPasswordResetEmail = async (email, resetToken) => {
   try {
     const resetUrl = `http://localhost:3000/reset-password?token=${resetToken}`;
