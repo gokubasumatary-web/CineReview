@@ -108,15 +108,18 @@ export default function Home() {
         <section className="py-32 px-margin-mobile md:px-margin-desktop space-y-12 bg-surface-dim relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
           
+import MovieCard from '@/components/MovieCard';
+import SectionHeader from '@/components/SectionHeader';
+
+// ... (skipping constants)
+
+// Inside Home component:
           <div className="flex justify-between items-end relative z-10">
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <span className="w-8 h-px bg-red-600"></span>
-                <span className="font-label-caps text-xs text-red-500 font-bold uppercase tracking-[0.3em]">Cinematic Highlights</span>
-              </div>
-              <h3 className="font-h2-title text-5xl uppercase tracking-tighter text-white font-black italic">Trending Now</h3>
-            </div>
-            <a href="/browse" className="group flex items-center gap-4 bg-white/5 hover:bg-white/10 px-8 py-4 rounded-2xl border border-white/5 transition-all">
+            <SectionHeader 
+              title="Trending Now" 
+              subtitle="Cinematic Highlights" 
+            />
+            <a href="/browse" className="group flex items-center gap-4 bg-white/5 hover:bg-white/10 px-8 py-4 rounded-2xl border border-white/5 transition-all mb-12">
               <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-white transition-colors">Explore All Vault</span>
               <span className="material-symbols-outlined text-sm text-red-600 group-hover:translate-x-1 transition-transform">arrow_forward</span>
             </a>
