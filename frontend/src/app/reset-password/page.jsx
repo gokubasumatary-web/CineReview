@@ -4,6 +4,11 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
+/**
+ * Reset Password Page Component
+ * Allows users to set a new password using a token from their email.
+ * Includes token validation and password match checking.
+ */
 export default function ResetPasswordPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
