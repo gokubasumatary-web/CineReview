@@ -16,6 +16,15 @@ const GENRE_MAP = {
   10770: 'TV Movie', 53: 'Thriller', 10752: 'War', 37: 'Western'
 };
 
+/**
+ * Browse Content Component
+ * The main movie discovery engine.
+ * Features:
+ * - Real-time search with debouncing.
+ * - Multi-criteria filtering (Genre, Year).
+ * - Multi-criteria sorting (Newest, Rating, Popularity).
+ * - Infinite-ready paginated results grid.
+ */
 function BrowseContent() {
   const searchParams = useSearchParams();
   const urlQuery = searchParams.get('q');
