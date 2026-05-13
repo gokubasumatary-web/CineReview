@@ -1,5 +1,9 @@
 import Link from 'next/link';
 
+/**
+ * Footer Component
+ * Displays application branding, useful links, and a newsletter subscription form.
+ */
 export default function Footer() {
   return (
     <footer className="py-xl px-margin-mobile md:px-margin-desktop border-t border-white/10 bg-surface-container-lowest">
