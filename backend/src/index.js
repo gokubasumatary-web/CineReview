@@ -1,3 +1,8 @@
+/**
+ * CineVerse Backend Entry Point
+ * Initializes the Express server, connects to the Prisma ORM,
+ * and configures global middleware (CORS, JSON parsing).
+ */
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -9,6 +14,7 @@ const app = express();
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 5000;
 
+// Global Middleware
 app.use(cors());
 app.use(express.json());
 
