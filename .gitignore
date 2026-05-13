@@ -1,3 +1,6 @@
+# CineVerse Git Ignore Rules
+# Excludes dependencies, environment secrets, build artifacts, and local databases.
+
 # dependencies
 node_modules/
 backend/node_modules/
