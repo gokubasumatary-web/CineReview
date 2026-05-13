@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SectionHeader from '@/components/SectionHeader';
 
 const BACKEND_URL = 'http://localhost:5000/api';
 
@@ -44,12 +45,11 @@ export default function ReviewsPage() {
       <Navbar />
       
       <main className="flex-grow pt-32 px-margin-mobile md:px-margin-desktop pb-20">
-        <header className="mb-12">
-          <h1 className="font-h1-hero text-5xl text-white mb-4 font-bold tracking-tighter uppercase">Community Reviews</h1>
-          <p className="text-lg text-slate-400 opacity-80">
-            Latest critical insights from the CineVerse community.
-          </p>
-        </header>
+        <SectionHeader 
+          title="Community Reviews" 
+          subtitle="Critique" 
+          description="Latest critical insights from the CineVerse community."
+        />
 
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-20 space-y-4">
