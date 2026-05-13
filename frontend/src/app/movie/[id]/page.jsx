@@ -7,6 +7,16 @@ import Footer from '@/components/Footer';
 const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/original';
 const BACKEND_URL = 'http://localhost:5000/api';
 
+/**
+ * Movie Detail Page Component
+ * Displays comprehensive information about a specific movie.
+ * Features:
+ * - Dynamic backdrop and metadata retrieval.
+ * - AI-powered Critical Insights panel.
+ * - Principal cast carousel.
+ * - Community review submission and display.
+ * - Watchlist integration.
+ */
 export default function MovieDetail({ params: paramsPromise }) {
   const params = use(paramsPromise);
   const { id } = params;
