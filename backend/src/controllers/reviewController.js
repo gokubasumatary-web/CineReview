@@ -40,6 +40,14 @@ const getReviews = async (req, res) => {
 const createReview = async (req, res) => {
   try {
     const { movieId, userId, content, rating } = req.body;
+
+    if (!movieId || !userId || !content || rating === undefined) {
+      return res.status(400).json({ message: 'All review fields are required' });
+    }
+
+    if (rating < 1 || rating > 10) {
+      return res.status(400).json({ message: 'Rating must be between 1 and 10' });
+    }
     const review = await prisma.review.create({
       data: {
         movieId,
