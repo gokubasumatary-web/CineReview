@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "CineVerse Backend: Node.js/Express server with Prisma ORM and AI-powered cinematic insights.",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
