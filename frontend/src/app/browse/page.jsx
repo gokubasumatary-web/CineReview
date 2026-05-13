@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import MovieCard from '@/components/MovieCard';
+import SectionHeader from '@/components/SectionHeader';
 
 const TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
 const BACKEND_URL = 'http://localhost:5000/api';
@@ -164,9 +165,11 @@ function BrowseContent() {
             <div className="sticky top-32 glass-card p-10 rounded-[2.5rem] border border-white/5 shadow-2xl relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/5 blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-red-600/10 transition-colors"></div>
                 
-                <h3 className="text-2xl text-white mb-10 flex items-center gap-4 font-black uppercase tracking-tighter">
-                  <span className="material-symbols-outlined text-red-600 text-3xl">tune</span> Filters
-                </h3>
+                <SectionHeader 
+                  title="Film Vault" 
+                  subtitle="Discovery" 
+                  description="Explore our curated collection of cinematic masterpieces across genres and eras."
+                />
 
                 {/* Search in Sidebar */}
                 <div className="mb-12">
