@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, use } from 'react';
+import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -20,6 +21,7 @@ const BACKEND_URL = 'http://localhost:5000/api';
 export default function MovieDetail({ params: paramsPromise }) {
   const params = use(paramsPromise);
   const { id } = params;
+  const router = useRouter();
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isAdding, setIsAdding] = useState(false);
@@ -30,7 +32,7 @@ export default function MovieDetail({ params: paramsPromise }) {
   const handleAddToWatchlist = async () => {
     const storedUser = localStorage.getItem('user');
     if (!storedUser) {
-      alert('Please login to add to watchlist');
+      router.push('/login');
       return;
     }
 
@@ -278,7 +280,13 @@ export default function MovieDetail({ params: paramsPromise }) {
                     {isAdding ? 'Adding...' : 'Add to Watchlist'}
                   </button>
                   <button 
-                    onClick={() => setIsReviewModalOpen(true)}
+                    onClick={() => {
+                      if (!localStorage.getItem('user')) {
+                        router.push('/login');
+                      } else {
+                        setIsReviewModalOpen(true);
+                      }
+                    }}
                     className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-5 rounded-2xl shadow-2xl shadow-red-900/40 transform active:scale-[0.98] transition-all uppercase tracking-widest text-xs"
                   >
                     Write Review
@@ -329,7 +337,13 @@ export default function MovieDetail({ params: paramsPromise }) {
                 <p className="text-slate-500 text-sm font-medium uppercase tracking-widest">Voice of the CineVerse</p>
               </div>
               <button 
-                onClick={() => setIsReviewModalOpen(true)}
+                onClick={() => {
+                  if (!localStorage.getItem('user')) {
+                    router.push('/login');
+                  } else {
+                    setIsReviewModalOpen(true);
+                  }
+                }}
                 className="bg-white/5 hover:bg-white/10 text-white px-8 py-3 rounded-xl border border-white/10 font-bold text-xs uppercase tracking-widest transition-all"
               >
                 Post Review
