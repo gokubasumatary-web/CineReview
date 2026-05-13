@@ -4,6 +4,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+/**
+ * Signup Page Component
+ * Handles new user registration for the CineVerse platform.
+ * Features:
+ * - Real-time input handling for names and credentials.
+ * - Secure communication with the Auth API.
+ * - Auto-login and redirection upon successful registration.
+ */
 export default function SignupPage() {
   const router = useRouter();
   const [firstName, setFirstName] = useState('');
