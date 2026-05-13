@@ -6,6 +6,11 @@ import Footer from '@/components/Footer';
 
 const BACKEND_URL = 'http://localhost:5000/api';
 
+/**
+ * Reviews Page Component
+ * Aggregates and displays the latest reviews from all users.
+ * Acts as a community feed for cinematic discussion.
+ */
 export default function ReviewsPage() {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
