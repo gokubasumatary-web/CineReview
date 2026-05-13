@@ -3,6 +3,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
+/**
+ * Forgot Password Page Component
+ * Allows users to request a password reset link via email.
+ * Connects to the backend auth/forgot-password endpoint.
+ */
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
